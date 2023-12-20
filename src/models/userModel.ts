@@ -1,14 +1,21 @@
 import mongoose from "mongoose";
+import isEmail from "validator/lib/isEmail";
 
 const userSchema = new mongoose.Schema({
-    name: {
+    fname: {
         type: String,
-        required: [true, "Please enter your name."]
+        required: [true, "Please enter your first name."]
+    },
+    lname: {
+        type: String,
+        required: [true, "Please enter your last name."]
     },
     email: {
         type: String,
         required: [true, "Please enter your email."],
-        unique: true
+        unique: true,
+        lowercase: true,
+        validate: [isEmail, "Please enter a valid email."]
     },
     password: {
         type: String,
@@ -17,8 +24,12 @@ const userSchema = new mongoose.Schema({
     isAdmin: {
         type: Boolean,
         default: false
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
     }
 });
 
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const User = mongoose.models.users || mongoose.model("user", userSchema);
 export default User;

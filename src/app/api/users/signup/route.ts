@@ -5,18 +5,33 @@ import { NextRequest, NextResponse } from "next/server";
 
 connect();
 
+
+const handleErrors = (err: any) => {
+
+    let error: any = {}
+    if(err.message.includes("user validation failed")){
+        Object.values(err.errors).forEach((e: any) => {
+            error[e.properties.path] = e.properties.message;
+        });
+    }
+    console.log(error);
+
+    return error;
+}
+
+
 export async function POST(request: NextRequest){
 
     console.log("[*] signup request recieved.")
 
     try{
-        const {name, email, password} = await request.json();
-        console.log(name, email, password);
+        const {fname, lname, email, password} = await request.json();
 
         const user = await (new User({
             email,
             password,
-            name
+            fname,
+            lname
         })).save();
 
         console.log("[+] New user created" + user);
@@ -29,7 +44,8 @@ export async function POST(request: NextRequest){
 
 
     }catch(err: any){
-        console.log("[-] Err creating new user. " + err.message);
+        // console.log("[-] Err creating new user. " + err.message);
+        handleErrors(err);
         return NextResponse.json({error: err.message}, {status:500})
 
     }
