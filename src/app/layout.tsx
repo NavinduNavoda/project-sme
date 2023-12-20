@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Chivo } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 import Nav from "@/components/nav2";
+import Footer from "@/components/Footer";
 
 const chivo = Chivo({ subsets: ["latin"] });
 
@@ -22,6 +22,7 @@ export default function RootLayout({
         <Nav />
         {/* <Navbar /> */}
         {children}
+        <Footer />
       </body>
     </html>
   );

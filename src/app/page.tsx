@@ -8,6 +8,7 @@ import heroBg from "../../public/heroBackground.png";
 import { Button } from "@/components/ui/button";
 import Posts from "@/components/ApiTest";
 import Scroll from "@/components/ScrollButton";
+import CardList from "@/components/CardList";
 
 // bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
 
@@ -33,7 +34,7 @@ export default function Home() {
               WE GUIDE <br />
               YOU EARN
             </p>
-            <div className="absolute px-4 sm:px-4 md:px-24 lg:px-40 z-20 w-full lg:mt-[150px] xl:mt-[170px] 2xl:mt-[200px] flex items-center justify-between">
+            {/* <div className="absolute px-4 sm:px-4 md:px-24 lg:px-40 z-20 w-full lg:mt-[150px] xl:mt-[170px] 2xl:mt-[200px] flex items-center justify-between">
               <div>
                 <p className="text-white uppercase font-bold text-[10px] 2xl:text-[16px] w-[150px] sm:w-[200px] md:w-[250px] lg:w-[350px] xl:w-[400px] 2xl:w-[500px]">
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
@@ -52,7 +53,7 @@ export default function Home() {
                   BOOK AND APPOINTMENT
                 </Button>
               </div>
-            </div>
+            </div> */}
             {/* <Scroll /> */}
             <Image
               src={heroBg}
@@ -61,10 +62,23 @@ export default function Home() {
               className="top-1/2 transform -translate-y-1/4 cover z-0"
             />
           </div>
-          <div>
+          {/* cards section */}
+          <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+            <h1 className="font-bold text-[28px] font-montserrat text-paragrapgh">
+              Our top services and products
+            </h1>
+            <p className="text-[12px] text-paralight tracking-wide py-4 leading-none mb-12">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor.
+            </p>
+
+            <CardList />
+          </div>
+
+          {/* <div>
             <h1>Fake API</h1>
             <Posts />
-          </div>
+          </div> */}
         </div>
       </div>
     </main>
