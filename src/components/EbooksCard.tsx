@@ -1,10 +1,9 @@
 import React from "react";
 import Link from "next/link";
-import { HiArrowLongRight } from "react-icons/hi2";
 
-const Card = () => {
+const EbooksCard = () => {
   return (
-    <div className="card w-64">
+    <div className="card w-64 mb-8">
       <figure>
         <img
           className="w-full"
@@ -27,7 +26,7 @@ const Card = () => {
         <Link href="/">
           <div className="card-actions flex text-accentsme">
             <button className="text-[12px] font-bold ">BUY NOW</button>
-            <HiArrowLongRight size={24} />
+            <button className="text-[12px] font-bold ">ADD TO CARD</button>
           </div>
         </Link>
       </div>
@@ -35,4 +34,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default EbooksCard;

@@ -2,11 +2,7 @@ import CardsContainer from "@/components/CardsContainer";
 import React from "react";
 
 const About = () => {
-  return (
-    <div>
-      <CardsContainer />
-    </div>
-  );
+  return <div>about</div>;
 };
 
 export default About;

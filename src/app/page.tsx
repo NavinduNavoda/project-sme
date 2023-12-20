@@ -8,7 +8,7 @@ import heroBg from "../../public/heroBackground.png";
 import { Button } from "@/components/ui/button";
 import Posts from "@/components/ApiTest";
 import Scroll from "@/components/ScrollButton";
-import CardList from "@/components/CardList";
+import ServiceCardList from "@/components/ServiceCardList";
 
 // bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
 
@@ -72,7 +72,7 @@ export default function Home() {
               eiusmod tempor.
             </p>
 
-            <CardList />
+            <ServiceCardList />
           </div>
 
           {/* <div>
