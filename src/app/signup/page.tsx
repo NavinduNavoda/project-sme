@@ -28,7 +28,7 @@ const Sign = () => {
   return (
     <div className="text-center">
       <div>
-        <section className=" flex items-center justify-center mb-10">
+        <section className="flex items-center  justify-center mb-10">
           {/* signup container */}
           <div className="bg-lowwhite flex max-w-3xl items-center">
             {/* form */}
@@ -40,7 +40,7 @@ const Sign = () => {
                 className="mx-auto mb-8"
               ></Image>
               <h2 className="font-bold text-2xl font-montserrat uppercase text-paragrapgh">
-                Welcome back!
+                create an account!
               </h2>
               <p className="text-xs mt-2 mb-8 text-paragrapgh">
                 Please enter your login credentials
