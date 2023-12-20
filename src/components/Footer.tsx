@@ -124,7 +124,7 @@ const Footer = () => {
             </h1>
             <div className="grid w-full gap-2">
               <Textarea placeholder="Please provide us with your email, and we will contact you soon." />
-              <Button className=" bg-paragrapgh">Send</Button>
+              <Button className=" bg-paragrapgh rounded-[2px]">Send</Button>
             </div>
             <div className="flex gap-6 py-5">
               <FaInstagram

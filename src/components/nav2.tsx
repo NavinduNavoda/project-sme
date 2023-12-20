@@ -56,7 +56,7 @@ const Navbar = () => {
           </button>
         </Link>
         <Link href="../signup">
-          <Button className="bg-accentsme hover:bg-accentsmehover">
+          <Button className="bg-accentsme rounded-[2px] hover:bg-accentsmehover">
             SIGNUP
           </Button>
         </Link>
