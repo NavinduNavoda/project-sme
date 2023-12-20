@@ -1,7 +1,8 @@
 import connect from "@/db/connect";
 import User from "@/models/userModel";
+import UserUpdater from "@/models/userUpdaterModel";
 import { NextRequest, NextResponse } from "next/server";
-// import bcryptjs from "bcryptjs";
+import bcryptjs from "bcryptjs";
 
 connect();
 
@@ -27,32 +28,51 @@ export async function POST(request: NextRequest){
     try{
         const {fname, lname, email, password} = await request.json();
 
+        //if user already exist.
+        const preUser = await User.findOne({email});
+        if(preUser){
+            console.log("[*] user already exist.");
+
+            if(!preUser.isVerified) User.deleteOne({email});  // todo:::
+        }
+
+
+        //creating new user
         const user = await (new User({
             email,
             password,
             fname,
             lname
         })).save();
+        console.log("[+] New user created : " + user._id);
 
-        console.log("[+] New user created" + user);
+        //creating verification
+        const salt = await bcryptjs.genSalt()
+        const verifyTokenString = await bcryptjs.hash(user._id, salt); //created string to check incoming verify request.
+        const userUpdater = await (new UserUpdater({
+            userId: user._id,
+            verifyToken: verifyTokenString,
+            verifyTokenExpiry : new Date(new Date().getTime() + (30*60*1000)), //giving 30 mins.
+        })).save();
+        console.log("[+] New Verify Token Created : " + userUpdater._id);
+
+        //sending verify email
+
 
         return NextResponse.json({
             message: "User created.",
             success: true,
-            user
         },{status: 200});
 
 
     }catch(err: any){
-        // console.log("[-] Err creating new user. " + err.message);
+        console.log("[-] Err creating new user. " + err.message);
         handleErrors(err);
-        return NextResponse.json({error: err.message}, {status:500})
+        return NextResponse.json({...handleErrors(err), success: false}, {status:400});
 
     }
 }
 
-export async function GET(request: NextRequest){
-    console.log("signup get request");
-}
+
 
 
