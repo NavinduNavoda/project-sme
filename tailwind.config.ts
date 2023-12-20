@@ -8,6 +8,9 @@ module.exports = {
     "./src/**/*.{ts,tsx}",
   ],
   theme: {
+    fontFamily: {
+      montserrat: ["Montserrat", "sans-serif"],
+    },
     container: {
       center: true,
       padding: "2rem",
@@ -21,6 +24,8 @@ module.exports = {
         paragrapgh: "#1F3E53",
         accentsme: "#F7901E",
         accentsmehover: "#FF7A00",
+        paralight: "#686A6D",
+        lowwhite: "#F3F3F3",
         // custom tailwind colors end
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
