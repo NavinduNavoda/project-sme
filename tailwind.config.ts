@@ -83,7 +83,7 @@ module.exports = {
     },
     animation: {
       "spin-slow": "spin 15s linear infinite",
-      "bounce-slow": "bounce 1s linear infinite",
+      "bounce-slow": "bounce 1.5s linear infinite",
     },
   },
   plugins: [require("tailwindcss-animate")],
