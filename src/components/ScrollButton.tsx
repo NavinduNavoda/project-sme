@@ -11,7 +11,7 @@ const Scroll = () => {
           src={arrow}
           height={200}
           alt="click here to scroll"
-          className="absolute top-1/3 transform -translate-y-1/2 ml-[168px] animate-bounce-slow"
+          className="absolute top-1/3 transform -translate-y-1/3 ml-[168px]"
         />
         <Image
           src={spin}

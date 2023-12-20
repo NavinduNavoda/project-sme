@@ -1,5 +1,7 @@
 import mongoose from "mongoose";
 import isEmail from "validator/lib/isEmail";
+import bcryptjs from "bcryptjs";
+
 
 const userSchema = new mongoose.Schema({
     fname: {
@@ -19,7 +21,8 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, "Please enter your password."]
+        required: [true, "Please enter your password."],
+        minlength: [6, "Minumum password lenght is 6 characters."],
     },
     isAdmin: {
         type: Boolean,
@@ -28,7 +31,18 @@ const userSchema = new mongoose.Schema({
     isVerified: {
         type: Boolean,
         default: false
+    },
+    isActive: {
+        type: Boolean,
+        default: true
     }
+
+});
+
+userSchema.pre("save", async function(next){
+    const salt = await bcryptjs.genSalt();
+    this.password = await bcryptjs.hash(this.password, salt);
+    next();
 });
 
 const User = mongoose.models.users || mongoose.model("user", userSchema);
