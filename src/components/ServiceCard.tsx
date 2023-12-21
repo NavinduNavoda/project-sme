@@ -19,10 +19,9 @@ const ServiceCard = () => {
         <h2 className="card-title text-paragrapgh text-[20px] font-montserrat font-black">
           COSMETIC BRAND
         </h2>
-        <p className="text-[12px] text-paralight tracking-wide py-4">
+        <p className="text-[16px] text-paralight tracking-wide py-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim.
+          eiusmod tempor incididunt
         </p>
         <Link href="/">
           <div className="card-actions flex text-accentsme">

@@ -5,10 +5,10 @@ import Image from "next/image";
 import heroBg from "../../public/heroBackground.png";
 
 // components
-import { Button } from "@/components/ui/button";
-import Posts from "@/components/ApiTest";
 import Scroll from "@/components/ScrollButton";
 import ServiceCardList from "@/components/ServiceCardList";
+import Accordian from "@/components/Accordian";
+import Timeline from "@/components/Timeline";
 
 // bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
 
@@ -64,7 +64,7 @@ export default function Home() {
           </div>
           {/* cards section */}
           <div className="px-4 sm:px-4 md:px-24 lg:px-40">
-            <h1 className="font-bold text-[28px] font-montserrat text-paragrapgh">
+            <h1 className="font-bold text-[28px] font-montserrat uppercase text-paragrapgh">
               Our top services and products
             </h1>
             <p className="text-[12px] text-paralight tracking-wide py-4 leading-none mb-12">
@@ -75,12 +75,33 @@ export default function Home() {
             <ServiceCardList />
           </div>
 
-          {/* <div>
-            <h1>Fake API</h1>
-            <Posts />
-          </div> */}
+          {/* appointment section */}
+          <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+            <h1 className="font-bold pt-8 text-[28px] font-montserrat text-paragrapgh mb-12">
+              BOOK AN APPOINTMENT FOR,
+            </h1>
+          </div>
+          <section className="flex items-start justify-center mb-10">
+            <div className="flex px-4 sm:px-4 md:px-24 lg:px-40 items-start w-full ">
+              <div className="lg:block hidden  items-center justify-center w-1/2">
+                <img
+                  className=""
+                  src="../../../appointmentimg.png"
+                  alt="appointment image"
+                  height="auto"
+                ></img>
+              </div>
+              <div className="md:w-1/2 px-8 md:px-16">
+                <Accordian />
+              </div>
+              {/* image */}
+            </div>
+          </section>
         </div>
       </div>
+      <Timeline />
     </main>
   );
 }
+
+// bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100

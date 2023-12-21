@@ -24,7 +24,7 @@ module.exports = {
         paragrapgh: "#1F3E53",
         accentsme: "#F7901E",
         accentsmehover: "#FF7A00",
-        paralight: "#686A6D",
+        paralight: "#818385",
         lowwhite: "#F3F3F3",
         // custom tailwind colors end
         border: "hsl(var(--border))",
@@ -83,11 +83,7 @@ module.exports = {
     },
     animation: {
       "spin-slow": "spin 15s linear infinite",
-<<<<<<< Updated upstream
-      "bounce-slow": "bounce 1.5s linear infinite",
-=======
       "bounce-slow": "bounce 2s linear infinite",
->>>>>>> Stashed changes
     },
   },
   plugins: [require("tailwindcss-animate")],

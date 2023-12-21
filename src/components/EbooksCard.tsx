@@ -12,21 +12,22 @@ const EbooksCard = () => {
         />
       </figure>
       <div className="card-body">
-        <p className="text-paragrapgh text-[12px] font-montserrat tracking-[5px] pt-4">
+        <p className="text-paragrapgh text-[16px] font-montserrat tracking-[5px] pt-4">
           BUILD YOUR
         </p>
         <h2 className="card-title text-paragrapgh text-[20px] font-montserrat font-black">
           COSMETIC BRAND
         </h2>
-        <p className="text-[12px] text-paralight tracking-wide py-4">
+        <p className="text-[16px] text-paralight tracking-wide py-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim.
+          eiusmod tempor incididunt ut labore et
         </p>
         <Link href="/">
-          <div className="card-actions flex text-accentsme">
-            <button className="text-[12px] font-bold ">BUY NOW</button>
-            <button className="text-[12px] font-bold ">ADD TO CARD</button>
+          <div className="card-actions flex text-accentsme justify-between">
+            <button className="text-[16px] font-bold ">BUY NOW</button>
+            <button className="text-[16px] text-paragrapgh font-bold ">
+              ADD TO CARD
+            </button>
           </div>
         </Link>
       </div>
