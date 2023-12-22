@@ -2,7 +2,11 @@ import connect from "@/db/connect";
 import User from "@/models/userModel";
 import UserUpdater from "@/models/userUpdaterModel";
 import { NextRequest, NextResponse } from "next/server";
-import bcryptjs from "bcryptjs";
+import {v4 as uuid_v4} from "uuid";
+import { sendVerificationMail } from "@/helpers/mailer";
+
+import { Session, createNewSession } from "@/helpers/sessionHandler/session";
+import { saveSession } from "@/helpers/sessionHandler/sessionDB";
 
 connect();
 
@@ -15,8 +19,13 @@ const handleErrors = (err: any) => {
             error[e.properties.path] = e.properties.message;
         });
     }
-    console.log(error);
 
+    //dublicate error
+    if(err.code === 11000){
+        error["email"] = "This email already registerd."
+    }
+
+    console.log(error);
     return error;
 }
 
@@ -24,18 +33,9 @@ const handleErrors = (err: any) => {
 export async function POST(request: NextRequest){
 
     console.log("[*] signup request recieved.")
+    const {fname, lname, email, password} = await request.json();
 
     try{
-        const {fname, lname, email, password} = await request.json();
-
-        //if user already exist.
-        const preUser = await User.findOne({email});
-        if(preUser){
-            console.log("[*] user already exist.");
-
-            if(!preUser.isVerified) User.deleteOne({email});  // todo:::
-        }
-
 
         //creating new user
         const user = await (new User({
@@ -47,8 +47,9 @@ export async function POST(request: NextRequest){
         console.log("[+] New user created : " + user._id);
 
         //creating verification
-        const salt = await bcryptjs.genSalt()
-        const verifyTokenString = await bcryptjs.hash(user._id, salt); //created string to check incoming verify request.
+        let verifyTokenString = uuid_v4(); //created string to check incoming verify request.
+        verifyTokenString = verifyTokenString.replace(/\//g, "@");
+        
         const userUpdater = await (new UserUpdater({
             userId: user._id,
             verifyToken: verifyTokenString,
@@ -57,18 +58,29 @@ export async function POST(request: NextRequest){
         console.log("[+] New Verify Token Created : " + userUpdater._id);
 
         //sending verify email
+        await sendVerificationMail(user.email, process.env.API_URL! + "/api/users/verify/" + userUpdater.verifyToken);
 
+        const session = createNewSession(user._id, false, false);
+        await saveSession(session);
 
-        return NextResponse.json({
-            message: "User created.",
+        let res = NextResponse.json({
+            message: "User created. Verification email sent.",
             success: true,
+            token: session.token,
         },{status: 200});
+
+        res.cookies.set("session", session.id, {
+            httpOnly: true,
+        });
+        
+
+        return res;
 
 
     }catch(err: any){
+        await User.deleteOne({email: email});
         console.log("[-] Err creating new user. " + err.message);
-        handleErrors(err);
-        return NextResponse.json({...handleErrors(err), success: false}, {status:400});
+        return NextResponse.json({...handleErrors(err), success: false}, {status:200});
 
     }
 }

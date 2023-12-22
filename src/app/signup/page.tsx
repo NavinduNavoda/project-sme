@@ -5,18 +5,51 @@ import axios from "axios";
 import { useState } from "react";
 import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
+import { json } from "stream/consumers";
+import { setToken, getToken } from "../dataHolders/clientData";
 
 const Sign = () => {
   const signUp = async () => {
     console.log("signingUp");
+    setIsLoading(true);
 
     try {
       const res = await axios.post("/api/users/signup", user);
       console.log(res);
+      setStatus({message: res.data.message, success: res.data.success, email: res.data.email, password: res.data.password, fname: res.data.fname, lname: res.data.lnmae});
+      setToken(res.data.token);
     } catch (err: any) {
-      console.log(err.message);
+      console.log(err);
+    } finally{
+      setIsLoading(false);
     }
   };
+
+  const resend = async() => {
+    setIsLoading(true);
+    setStatus({message: "", success: false,  email: "", password: "", fname: "", lname: "",});
+    try{
+      console.log("token: " + getToken());
+      const res = await axios.post("/api/users/resendverify", {token: getToken()});
+      setStatus(res.data);
+      setToken(res.data.token);
+    }catch(err){
+      console.log(err);
+    }finally{
+      setIsLoading(false);
+    }
+  }
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [status, setStatus] = useState({
+    message: "",
+    success: false,
+    email: "",
+    password: "",
+    fname: "",
+    lname: "",
+  });
 
   const [user, setUser] = useState({
     email: "",
@@ -87,6 +120,22 @@ const Sign = () => {
                     setUser({ ...user, password: e.target.value });
                   }}
                 />
+
+                <div className={`${status.success? "text-green-500" : "text-red-500"} text-[16px]`}>
+                  <p>{status.email}</p>
+                  <p>{status.password}</p>
+                  <p>{status.fname}</p>
+                  <p>{status.lname}</p>
+                  <p>{status.message}</p>
+                  {status.success && (
+                    <button className="bg-paragrapgh text-white rounded-[2px] p-[10px]" onClick={resend}>Resend</button>
+                  )}
+                </div>
+
+                {isLoading && (<div className="text-[16px] text-accentsme">
+                  Loading ...
+                </div>)}
+
                 <button
                   className="bg-accentsme text-white py-2 hover:scale-105 duration-300 hover:bg-accentsmehover rounded-[2px]"
                   onClick={signUp}
