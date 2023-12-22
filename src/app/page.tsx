@@ -9,14 +9,13 @@ import Scroll from "@/components/ScrollButton";
 import ServiceCardList from "@/components/ServiceCardList";
 import Accordian from "@/components/Accordian";
 import Timeline from "@/components/Timeline";
+import svgPath from "../../public/timelinebg.svg";
 
-//
+//bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
+
 export default function Home() {
   return (
-    <main
-      className="bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
-    "
-    >
+    <main className="">
       <div>
         <div>
           <div className="px-4 sm:px-4 md:px-24 lg:px-40 pt-4 sm:pt-4 md:pt-4">
@@ -79,13 +78,17 @@ export default function Home() {
 
           {/* appointment section */}
           <div className="px-4 sm:px-4 md:px-24 lg:px-40">
-            <h1 className="font-bold pt-8 text-[28px] font-montserrat text-paragrapgh mb-12">
+            <h1 className="font-bold pt-8 text-[28px] font-montserrat text-paragrapgh">
               BOOK AN APPOINTMENT FOR,
             </h1>
+            <p className="text-[12px] text-paralight tracking-wide py-4 leading-none mb-12">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+              eiusmod tempor onsectetur adipiscing elit. Sed do.
+            </p>
           </div>
           <section className="flex items-start justify-center mb-10">
             <div className="flex px-4 sm:px-4 md:px-24 lg:px-40 items-start w-full ">
-              <div className="lg:block hidden  items-center justify-center w-1/2">
+              <div className="2xl:block hidden  items-center justify-center w-1/2">
                 <img
                   className=""
                   src="../../../appointmentimg.png"
@@ -93,7 +96,7 @@ export default function Home() {
                   height="auto"
                 ></img>
               </div>
-              <div className="md:w-1/2 px-8 md:px-16">
+              <div className="w-full 2xl:w-1/2 px-8 md:px-16 mx-auto">
                 <Accordian />
               </div>
               {/* image */}
@@ -101,7 +104,23 @@ export default function Home() {
           </section>
         </div>
       </div>
+      <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+        <h1 className="font-bold pt-8 text-[28px] font-montserrat uppercase text-paragrapgh">
+          how to book an appointment
+        </h1>
+        <p className="text-[12px] text-paralight tracking-wide py-4 leading-none ">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+          eiusmod tempor onsectetur adipiscing elit. Sed do.
+        </p>
+      </div>
+
       <Timeline />
+      <Image
+        src={svgPath}
+        width={1920}
+        alt="Hero background"
+        className="top-1/2 transform -translate-y-1/4 cover z-0"
+      />
     </main>
   );
 }

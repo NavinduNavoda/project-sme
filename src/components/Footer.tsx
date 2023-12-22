@@ -47,10 +47,10 @@ const Footer = () => {
               </Link>
             </div>
           </div>
-          <div className="border-l border-gray-500 h-[600px] hidden md:hidden sm:hidden"></div>
+          <div className="border-l border-gray-500 h-[600px] hidden sm:hidden"></div>
 
           <div className="w-1/2">
-            <h1 className="font-montserrat text-[30px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px] font-black text-paragrapgh uppercase pt-4 pb-12 text-center md:mx-0 md:text-left">
+            <h1 className="font-montserrat text-[30px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px] font-black text-paragrapgh uppercase pt-4 pb-4 text-center md:mx-0 md:text-left">
               Let’s Discuss Your{" "}
               <span className=" text-accentsme">business.</span>
             </h1>
