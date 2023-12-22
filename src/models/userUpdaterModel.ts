@@ -14,5 +14,5 @@ const userUpdaterSchema = new mongoose.Schema({
 
 });
 
-const UserUpdater = mongoose.models.users || mongoose.model("userupdaters", userUpdaterSchema);
+const UserUpdater = mongoose.models.userupdater || mongoose.model("userupdater", userUpdaterSchema);
 export default UserUpdater;
