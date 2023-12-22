@@ -12,113 +12,45 @@ import { FaYoutube } from "react-icons/fa";
 const Footer = () => {
   return (
     <div>
-      <footer className="bg-lowwhite text-white  px-4 sm:px-4 md:px-24 lg:px-40 py-12">
-        <div className=" mx-auto flex md:flex-row flex-col">
-          <div className="w-1/2">
+      <footer className="bg-lowwhite text-white px-4 sm:px-4 md:px-24 lg:px-40 py-12">
+        <div className="flex md:flex-row flex-col items-center sm:items-center ">
+          <div className="w-full px-4">
             <div className="pb-12">
               <Link href="/">
                 <Image
                   src={logo}
                   height={50}
                   alt="Picture of the author"
-                  className="pb-2"
+                  className="pb-2 mx-auto md:mx-0"
                 />
               </Link>
-              <p className="text-[14px] text-paralight tracking-wide py-4 leading-wide w-96">
+              <p className="text-[14px] text-paralight tracking-wide pt-6 leading-wide sm:px-24 md:px-0 md:mr-16 text-center md:text-left xl:w-[500px]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim. Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Sed do eiusmod tempor incididunt ut labore et
-                dolore magna aliqua. Ut enim ad minim.{" "}
+                enim ad minim. Lorem ipsum dolor sit amet dolore magna aliqua.
+                Ut enim ad minim. Lorem ipsum dolor sit amet.
               </p>
             </div>
-            <div className="flex justify-between mr-12">
-              <div>
-                <ul>
-                  <p className="text-accentsme font-montserrat font-bold text-[16px] pb-4">
-                    SERVICES
-                  </p>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul>
-                  <p className="text-accentsme font-montserrat font-bold text-[16px] pb-4">
-                    SERVICES
-                  </p>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul>
-                  <p className="text-accentsme font-montserrat font-bold text-[16px] pb-4">
-                    SERVICES
-                  </p>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                </ul>
-              </div>
-              <div>
-                <ul>
-                  <p className="text-accentsme font-montserrat font-bold text-[16px] pb-4">
-                    SERVICES
-                  </p>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                  <li className="text-[14px] text-paralight tracking-wide py-2 leading-none">
-                    Service #1
-                  </li>
-                </ul>
-              </div>
+            <div className="text-center text-accentsme font-montserrat font-bold text-[12px] pb-6 md:mx-0 md:text-left">
+              <Link href="../">
+                <p className="pb-4 hover:text-paragrapgh duration-300 ">HOME</p>
+              </Link>
+              <Link href="../about">
+                <p className="py-4 hover:text-paragrapgh duration-300 ">
+                  ABOUT US
+                </p>{" "}
+              </Link>
+              <Link href="../contact">
+                <p className="py-4 hover:text-paragrapgh duration-300 ">
+                  CONTACT US
+                </p>
+              </Link>
             </div>
-            <p className="text-[14px] font-bold text-[#8898A2] tracking-wide py-12 leading-wide w-96">
-              ©2023 SME Strategic Development . All rights reserved. Designed
-              and Developed By Tringledo.
-            </p>
           </div>
-          <div className="border-l border-gray-500 h-[600px]"></div>
+          <div className="border-l border-gray-500 h-[600px] hidden md:hidden sm:hidden"></div>
 
-          <div className="w-1/2 pl-24">
-            <h1 className="font-montserrat text-[40px] font-black text-paragrapgh uppercase pb-4">
+          <div className="w-1/2">
+            <h1 className="font-montserrat text-[30px] lg:text-[30px] xl:text-[40px] 2xl:text-[40px] font-black text-paragrapgh uppercase pt-4 pb-12 text-center md:mx-0 md:text-left">
               Let’s Discuss Your{" "}
               <span className=" text-accentsme">business.</span>
             </h1>
@@ -126,26 +58,30 @@ const Footer = () => {
               <Textarea placeholder="Please provide us with your email, and we will contact you soon." />
               <Button className=" bg-paragrapgh rounded-[2px]">Send</Button>
             </div>
-            <div className="flex gap-6 py-5">
+            <div className="flex lg:p-5 py-5 px-8 justify-between sm:px-12 md:px-2 lg:px-12">
               <FaInstagram
-                size={35}
-                className="text-2xl cursor-pointer text-[#4A6373] hover:text-yellow-600"
+                size={30}
+                className="cursor-pointer text-[#4A6373] hover:text-yellow-600"
               />
               <FaTwitter
-                size={35}
-                className="text-2xl cursor-pointer text-[#4A6373] hover:text-blue-600"
+                size={30}
+                className="cursor-pointer text-[#4A6373] hover:text-blue-600"
               />
               <FaLinkedin
-                size={35}
-                className="text-2xl cursor-pointer text-[#4A6373] hover:text-blue-600"
+                size={30}
+                className="cursor-pointer text-[#4A6373] hover:text-blue-600"
               />
               <FaYoutube
-                size={35}
-                className="text-2xl cursor-pointer text-[#4A6373] hover:text-red-600"
+                size={30}
+                className="cursor-pointer text-[#4A6373] hover:text-red-600"
               />
             </div>
           </div>
         </div>
+        <p className="text-[12px] font-bold text-[#8898A2] tracking-wide py-4 px-4 mx-auto md:mx-0 leading-wide text-center w-96 md:text-left">
+          ©2023 SME Strategic Development . All rights reserved. Designed and
+          Developed By Tringledo.
+        </p>
       </footer>
     </div>
   );

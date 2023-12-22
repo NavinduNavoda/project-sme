@@ -3,10 +3,10 @@ import Link from "next/link";
 
 const EbooksCard = () => {
   return (
-    <div className="card w-64 mb-8">
+    <div className="card w-[235px] 2xl:w-[270px] mb-8 mx-auto">
       <figure>
         <img
-          className="w-full"
+          className="w-full hover:scale-110 duration-300"
           src="https://daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
           alt="Shoes"
         />
@@ -24,8 +24,10 @@ const EbooksCard = () => {
         </p>
         <Link href="/">
           <div className="card-actions flex text-accentsme justify-between">
-            <button className="text-[16px] font-bold ">BUY NOW</button>
-            <button className="text-[16px] text-paragrapgh font-bold ">
+            <button className="text-[14px] font-bold hover:text-paragrapgh duration-300 hover:scale-105">
+              BUY NOW
+            </button>
+            <button className="text-[14px] text-paragrapgh hover:text-accentsme duration-300 hover:scale-105 font-bold ">
               ADD TO CARD
             </button>
           </div>

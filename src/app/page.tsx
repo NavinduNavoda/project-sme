@@ -10,11 +10,13 @@ import ServiceCardList from "@/components/ServiceCardList";
 import Accordian from "@/components/Accordian";
 import Timeline from "@/components/Timeline";
 
-// bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
-
+//
 export default function Home() {
   return (
-    <main className="">
+    <main
+      className="bg-red-100 sm:bg-green-100 md:bg-yellow-100 lg:bg-slate-200 xl:bg-green-100 2xl:bg-red-100
+    "
+    >
       <div>
         <div>
           <div className="px-4 sm:px-4 md:px-24 lg:px-40 pt-4 sm:pt-4 md:pt-4">
@@ -28,7 +30,7 @@ export default function Home() {
               <p className="relative px-4 sm:px-4 md:px-24 lg:px-40 text-[70px] sm:text-[100px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[250px] font-montserrat font-black text-accentsme leading-none z-20">
                 GOALS
               </p>
-              <Scroll />
+              {/* <Scroll /> */}
             </div>
             <p className="absolute px-4 pt-2 sm:pt-4 md:pt-6 lg:pt-10 xl:pt-12 2xl:pt-12 sm:px-4 md:px-24 lg:px-40 text-[16px] sm:text-[20px] md:text-[28px] lg:text-[36px] xl:text-[50px] 2xl:text-[64px] font-montserrat font-black text-white leading-none z-20 ">
               WE GUIDE <br />
@@ -63,7 +65,7 @@ export default function Home() {
             />
           </div>
           {/* cards section */}
-          <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+          <div className="px-4 sm:px-4 md:px-24 lg:px-36">
             <h1 className="font-bold text-[28px] font-montserrat uppercase text-paragrapgh">
               Our top services and products
             </h1>

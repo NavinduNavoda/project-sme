@@ -6,7 +6,6 @@ import { useState } from "react";
 import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
 
 const Sign = () => {
   const logIn = async () => {

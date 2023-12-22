@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
   return (
-    <div className="w-full px-4 sm:px-4 md:px-24 lg:px-40 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent">
+    <div className="w-full px-4 sm:px-4 md:px-24 lg:px-40 h-20 lg:h-28 text-paragrapgh bg-white lg:bg-transparent">
       <div className="max-w-screen-2xl h-full mx-auto flex items-center justify-between">
         <Link href="/">
           <Image
@@ -20,18 +20,21 @@ const Navbar = () => {
             className=""
           />
         </Link>
-        <ul className="hidden lg:inline-flex items-center gap-8 uppercase text-sm font-semibold">
+        <ul className="hidden lg:inline-flex items-center gap-8 uppercase text-sm font-semibold text-red">
           <Link
             // href="src\app\services"
             href="../services"
-            className="hover:text-accentsme duration-300"
+            className="hover:text-accentsme duration-300 "
           >
             Services
           </Link>
-          <Link href="../about" className="hover:text-accentsme duration-300">
+          <Link href="../about" className="hover:text-accentsme duration-300 ">
             About us
           </Link>
-          <Link href="../contact" className="hover:text-accentsme duration-300">
+          <Link
+            href="../contact"
+            className="hover:text-accentsme duration-300 "
+          >
             Contact us
           </Link>
         </ul>
