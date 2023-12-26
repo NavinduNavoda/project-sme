@@ -6,18 +6,19 @@ import connect from "@/db/connect";
 import User from "@/models/userModel";
 import UserUpdater from "@/models/userUpdaterModel";
 import {v4 as uuid_v4} from "uuid";
+import getJwtSessionData from "@/helpers/sessionHandler/getJwtSessionData";
 
 connect();
 
 export async function POST(request: NextRequest){
     
     try{
-        const sesId = request.cookies.get("session")?.value;        
+        const jwtToken = request.cookies.get("session")?.value;        
        
-        console.log("ses Id : " + sesId);
-        if(!sesId) throw "Invalid session. sesId";
        
-        const session = await getSessionById(sesId);
+        if(!jwtToken) throw "Invalid Token.";
+        const session = await getJwtSessionData(jwtToken);
+
         if(!session) throw "No session saved";
         if(session.isVerified) throw "Already Verified.";
 
@@ -27,7 +28,7 @@ export async function POST(request: NextRequest){
         if(user.isVerified) throw "Already Verified.";
 
         //removing pre verify tokens
-        UserUpdater.deleteOne({uid:session.uid});
+        await UserUpdater.deleteOne({uid:session.uid});
 
         //creating verification
         let verifyTokenString = uuid_v4(); //created string to check incoming verify request.
