@@ -15,7 +15,12 @@ export const saveSession = async (session: Session) => {
         isVerified: session.isVerified,
         isAdmin: session.isAdmin,
         expire: session.expire,
+        justVerified: session.justVerified,
     })).save();
+}
+
+export const makeJustVerified = async (id: string) => {
+    await SessionMongo.findOneAndUpdate({sessionId: id}, {justVerified: true});
 }
 
 export const getSessionById = async (id: string) => {

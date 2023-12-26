@@ -13,6 +13,7 @@ const sessionSchema = new mongoose.Schema({
     jwt: String,
     isVerified: Boolean,
     isAdmin: Boolean,
+    justVerified: Boolean,
     expire: Date,
 });
 

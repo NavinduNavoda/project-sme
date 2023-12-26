@@ -11,19 +11,22 @@ export async function POST(request: NextRequest){
 
     console.log("[*] login request recieved.")
 
+    
     //check if already logged in
-    const jwtToken = request.cookies.get("session")?.value;
-    if(jwtToken){
-        const session = await getSessionById(jwtToken);
-        if(session && session.isVerified){
-            return  NextResponse.json({
-                message: "Already Signed in",
-                success: true,
-            },{status: 200});
+    try{
+        const jwtToken = request.cookies.get("session")?.value;
+        if(jwtToken){
+            const session = await getSessionById(jwtToken);
+            if(session && session.isVerified){
+                return  NextResponse.json({
+                    message: "Already Signed in",
+                    success: true,
+                },{status: 200});
+            }
         }
-        
-    }
+    }catch(err){
 
+    }
     const {email, password} = await request.json();
 
     try{

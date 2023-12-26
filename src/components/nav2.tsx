@@ -6,6 +6,8 @@ import Image from "next/image";
 import logo from "./smeLogo.svg";
 import logoonly from "../../public/logoonly.svg";
 import { Button } from "./ui/button";
+import { useEffect } from "react";
+import axios from "axios";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -13,6 +15,17 @@ const Navbar = () => {
   const closeNav = () => {
     setNav(false);
   };
+
+  useEffect(() => {
+    
+    (async () => {
+      const res = await axios.post("/api/users/check");
+      if(res.data.loggedIn){
+        
+      }
+    })();
+
+  }, []);
 
   return (
     <div className="w-full px-4 sm:px-4 md:px-24 lg:px-40 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent max-w-screen-2xl mx-auto flex items-center justify-between z-40">

@@ -6,6 +6,7 @@ import {nanoid} from "nanoid"
 const createdExpireMins = 60 * 24 * 2;
 
 export class Session {
+    public justVerified = false;
     constructor(public uid: string, public id: string, public token: string, public jwt:string, public isVerified: boolean, public isAdmin: boolean, public expire: Date){}
 }
 

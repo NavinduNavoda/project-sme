@@ -25,10 +25,8 @@ export async function middleware(req: NextRequest){
         }
     }
 
-    if(path == "/signup"){
-        // return NextResponse.redirect(new URL("/login", req.nextUrl));
-        if(isLogedIn && isVerified) return NextResponse.redirect(new URL("/", req.nextUrl));
-        if(isLogedIn && !isVerified) return NextResponse.redirect(new URL("/login", req.nextUrl));
+    if(path == "/signup" || path == "/login"){
+        if(isLogedIn) return NextResponse.redirect(new URL("/", req.nextUrl));
     }
 
 }

@@ -36,13 +36,18 @@ export async function POST(request: NextRequest){
 
     console.log("[*] signup request recieved.")
 
-    //check if already logged in
-    const jwtToken = request.cookies.get("session")?.value;
-    if(jwtToken && await getJwtSessionData(jwtToken)){
-        return  NextResponse.json({
-            message: "Already Signed in",
-            success: true,
-        },{status: 200});
+    try{
+        //check if already logged in
+        const jwtToken = request.cookies.get("session")?.value;
+        if(jwtToken && await getJwtSessionData(jwtToken)){
+            return  NextResponse.json({
+                message: "Already Signed in",
+                success: true,
+            },{status: 200});
+        }
+
+    }catch(err){
+
     }
 
 
