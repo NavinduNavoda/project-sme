@@ -1,8 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getSessionById } from "./helpers/sessionHandler/sessionDB";
-import connect from "./db/connect";
 import getJwtData from "./helpers/sessionHandler/getJwtData";
-// import jwt from "jsonwebtoken";
 
 
 export async function middleware(req: NextRequest){
