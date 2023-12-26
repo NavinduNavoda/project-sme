@@ -19,7 +19,6 @@ const ServiceCard = () => {
         <h2 className="card-title text-paragrapgh text-[20px] font-montserrat font-black">
           COSMETIC BRAND
         </h2>
-<<<<<<< Updated upstream
         <p className="text-[16px] text-paralight tracking-wide py-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor incididunt
@@ -28,16 +27,7 @@ const ServiceCard = () => {
           <div className="card-actions flex text-accentsme hover:text-paragrapgh duration-300 hover:scale-105">
             <button className="text-[14px] font-bold pr-2">BUY NOW</button>
             <HiArrowLongRight size={30} />
-=======
-        <p className="text-[16px] text-paragrapgh opacity-[.7] tracking-wide py-4">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor.
-        </p>
-        <Link href="/">
-          <div className="card-actions flex text-accentsme">
-            <button className="text-[16px] font-bold mr-[10px]">BUY NOW</button>
-            <HiArrowLongRight size={24} />
->>>>>>> Stashed changes
+
           </div>
         </Link>
       </div>

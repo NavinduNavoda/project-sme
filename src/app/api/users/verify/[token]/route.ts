@@ -12,7 +12,7 @@ export async function GET(req: NextRequest, { params }: { params: { token: strin
         if(!userUpdater) throw "Invalid verify token.";
         await UserUpdater.deleteOne({_id: userUpdater._id});
 
-        if(userUpdater.verifyTokenExpiry.getTime() < new Date().getTime()) throw "verify token expired.";
+        if(userUpdater.verifyTokenExpiry < new Date()) throw "verify token expired.";
 
         const user = await User.findOneAndUpdate({_id: userUpdater.userId}, {isVerified: true});
         if(!user) throw "Invalid verify token.";

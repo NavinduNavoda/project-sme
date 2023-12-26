@@ -17,21 +17,14 @@ export async function POST(request: NextRequest){
         console.log("ses Id : " + sesId);
         if(!sesId) throw "Invalid session. sesId";
        
-        const {token} = await request.json();
-        console.log("tokenId : " + token);
-        if(!token) throw "Invalid session. Token";
-
         const session = await getSessionById(sesId);
-        if(!session) throw "Invalid Session. No session saved";
+        if(!session) throw "No session saved";
         if(session.isVerified) throw "Already Verified.";
-
-        console.log("session.token : " + session.token);
-
-        if(session.token != token) throw "Invalid Token";
 
         //get user
         const user = await User.findById(session.uid);
         if(!user) throw "No user saved."
+        if(user.isVerified) throw "Already Verified.";
 
         //removing pre verify tokens
         UserUpdater.deleteOne({uid:session.uid});
@@ -60,7 +53,7 @@ export async function POST(request: NextRequest){
     }catch(err:any){
         console.log(err);
         return NextResponse.json({
-            message: "Resend faild",
+            message: (typeof err === 'string')? err : "Resend faild",
             success: false,
         },{status: 200});
     }

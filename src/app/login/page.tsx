@@ -92,7 +92,6 @@ const Sign = () => {
                 </Link>
               </div>
             </div>
-
             {/* image */}
             <div className="md:block hidden w-1/2">
               <img

@@ -6,19 +6,42 @@ import { useState } from "react";
 import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
 import { json } from "stream/consumers";
-import { setToken, getToken } from "../dataHolders/clientData";
+import {toast, Toaster} from "react-hot-toast"
+import { useRouter } from 'next/navigation';
 
 const Sign = () => {
+  
+  const {push} = useRouter();
+
+
   const signUp = async () => {
     console.log("signingUp");
-    setIsLoading(true);
+    // setIsLoading(true);
+    const stoast = toast.loading("Signing Up");
 
     try {
       const res = await axios.post("/api/users/signup", user);
       console.log(res);
       setStatus({message: res.data.message, success: res.data.success, email: res.data.email, password: res.data.password, fname: res.data.fname, lname: res.data.lnmae});
-      setToken(res.data.token);
+      
+      if(res.data.success) {
+        toast.success('Signed Up Successfully', { id: stoast });
+        push("/login");
+
+      }
+      else {
+        toast.error('Error Signing Up', { id: stoast });
+        if(res.data.email) toast.error(res.data.email);
+        if(res.data.password) toast.error(res.data.password);
+        if(res.data.fname) toast.error(res.data.fname);
+        if(res.data.lname) toast.error(res.data.lname);
+
+      } 
+
+
+
     } catch (err: any) {
+      toast.error('Error Signing Up', { id: stoast });
       console.log(err);
     } finally{
       setIsLoading(false);
@@ -29,14 +52,12 @@ const Sign = () => {
     setIsLoading(true);
     setStatus({message: "", success: false,  email: "", password: "", fname: "", lname: "",});
     try{
-      console.log("token: " + getToken());
-      const res = await axios.post("/api/users/resendverify", {token: getToken()});
+      const res = await axios.post("/api/users/resendverify");
       setStatus(res.data);
-      setToken(res.data.token);
     }catch(err){
       console.log(err);
     }finally{
-      setIsLoading(false);
+      // setIsLoading(false);
     }
   }
 
@@ -60,6 +81,7 @@ const Sign = () => {
 
   return (
     <div className="text-center">
+      <Toaster position="top-center" reverseOrder={false} />
       <div>
         <section className="flex items-center  justify-center mb-10">
           {/* signup container */}
@@ -121,7 +143,7 @@ const Sign = () => {
                   }}
                 />
 
-                <div className={`${status.success? "text-green-500" : "text-red-500"} text-[16px]`}>
+                {/* <div className={`${status.success? "text-green-500" : "text-red-500"} text-[16px]`}>
                   <p>{status.email}</p>
                   <p>{status.password}</p>
                   <p>{status.fname}</p>
@@ -134,7 +156,7 @@ const Sign = () => {
 
                 {isLoading && (<div className="text-[16px] text-accentsme">
                   Loading ...
-                </div>)}
+                </div>)} */}
 
                 <button
                   className="bg-accentsme text-white py-2 hover:scale-105 duration-300 hover:bg-accentsmehover rounded-[2px]"

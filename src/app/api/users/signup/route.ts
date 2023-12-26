@@ -6,7 +6,9 @@ import {v4 as uuid_v4} from "uuid";
 import { sendVerificationMail } from "@/helpers/mailer";
 
 import { Session, createNewSession } from "@/helpers/sessionHandler/session";
-import { saveSession } from "@/helpers/sessionHandler/sessionDB";
+import { saveSession, getSessionById } from "@/helpers/sessionHandler/sessionDB";
+
+import getJwtSessionData from "@/helpers/sessionHandler/getJwtSessionData";
 
 connect();
 
@@ -33,9 +35,23 @@ const handleErrors = (err: any) => {
 export async function POST(request: NextRequest){
 
     console.log("[*] signup request recieved.")
+
+    //check if already logged in
+    const jwtToken = request.cookies.get("session")?.value;
+    if(jwtToken && await getJwtSessionData(jwtToken)){
+        return  NextResponse.json({
+            message: "Already Signed in",
+            success: true,
+        },{status: 200});
+    }
+
+
     const {fname, lname, email, password} = await request.json();
 
     try{
+
+        const preUser = await User.findOne({email});
+        if(preUser) throw {message: "user validation failed", errors: [{properties:{ path: "email", message: "This email already registerd." }}]}
 
         //creating new user
         const user = await (new User({
@@ -60,25 +76,25 @@ export async function POST(request: NextRequest){
         //sending verify email
         await sendVerificationMail(user.email, process.env.API_URL! + "/api/users/verify/" + userUpdater.verifyToken);
 
-        const session = createNewSession(user._id, false, false);
+        const session = await createNewSession(user._id, false);
         await saveSession(session);
 
         let res = NextResponse.json({
             message: "User created. Verification email sent.",
             success: true,
-            token: session.token,
         },{status: 200});
 
-        res.cookies.set("session", session.id, {
+        res.cookies.set("session", session.jwt, {
             httpOnly: true,
+            sameSite: "lax",
+            maxAge: 1000*60*60*24*365
         });
-        
+
 
         return res;
 
 
     }catch(err: any){
-        await User.deleteOne({email: email});
         console.log("[-] Err creating new user. " + err.message);
         return NextResponse.json({...handleErrors(err), success: false}, {status:200});
 
