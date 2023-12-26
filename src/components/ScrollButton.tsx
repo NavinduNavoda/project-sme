@@ -5,7 +5,7 @@ import arrow from "../../public/arrow.svg";
 
 const Scroll = () => {
   return (
-    <div className="h-screen absolute top-1/4 ml-[1000px] z-10">
+    <div className="h-screen absolute top-1/4 hidden lg:block lg:ml-[650px] xl:block xl:ml-[800px] 2xl:ml-[1000px] z-20">
       <div className="relative">
         <Image
           src={arrow}
