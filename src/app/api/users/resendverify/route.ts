@@ -28,7 +28,7 @@ export async function POST(request: NextRequest){
         if(user.isVerified) throw "Already Verified.";
 
         //removing pre verify tokens
-        await UserUpdater.deleteOne({uid:session.uid});
+        await UserUpdater.deleteMany({uid:session.uid});
 
         //creating verification
         let verifyTokenString = uuid_v4(); //created string to check incoming verify request.

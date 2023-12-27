@@ -5,13 +5,12 @@ import axios from "axios";
 import { useState } from "react";
 import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
-import { json } from "stream/consumers";
 import {toast, Toaster} from "react-hot-toast"
 import { useRouter } from 'next/navigation';
 
 const Sign = () => {
   
-  const {push} = useRouter();
+  const {push, refresh} = useRouter();
 
 
   const signUp = async () => {
@@ -26,7 +25,7 @@ const Sign = () => {
       
       if(res.data.success) {
         toast.success('Signed Up Successfully', { id: stoast });
-        push("/login");
+        push("/");
 
       }
       else {

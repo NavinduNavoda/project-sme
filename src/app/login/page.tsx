@@ -6,15 +6,31 @@ import { useState } from "react";
 import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
 import Link from "next/link";
+import {toast, Toaster} from "react-hot-toast"
+import { useRouter } from 'next/navigation';
+
+
 
 const Sign = () => {
+
+  const {push, refresh} = useRouter();
+
+
   const logIn = async () => {
     console.log("logingin");
+    const stoast = toast.loading("Loging in");
 
     try {
       const res = await axios.post("/api/users/login", user);
+      if(res.data.success){
+        toast.success('Logged in Successfully', { id: stoast });
+        push("/");
+      }else{
+        toast.error(res.data.error, { id: stoast });
+      }
       console.log(res);
     } catch (err: any) {
+      toast.error("Error Loging in.", { id: stoast });
       console.log(err.message);
     }
   };
@@ -26,6 +42,7 @@ const Sign = () => {
 
   return (
     <div className="text-center">
+      <Toaster position="top-center" reverseOrder={false} />
       <div>
         <section className=" flex items-center justify-center mb-10">
           {/* login container */}
