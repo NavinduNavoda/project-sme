@@ -2,6 +2,7 @@
 import NavLink from "next/link";
 import React, { useState } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
+import { IoAlertCircle } from "react-icons/io5";
 import Image from "next/image";
 import logo from "./smeLogo.svg";
 import logoonly from "../../public/logoonly.svg";
@@ -9,11 +10,20 @@ import { Button } from "./ui/button";
 import { useEffect } from "react";
 import { useUserLog } from "@/app/dataHolders/store";
 import axios from "axios";
+import { FaUserCircle } from "react-icons/fa";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
-  const {setUserLog, setIsFetching, isLogedIn, fname, lname, isVerified, isFetching} = useUserLog();
+  const {
+    setUserLog,
+    setIsFetching,
+    isLogedIn,
+    fname,
+    lname,
+    isVerified,
+    isFetching,
+  } = useUserLog();
 
   let isChecked = false;
 
@@ -25,21 +35,25 @@ const Navbar = () => {
   // const [logData, setLogData] = useState({});
 
   useEffect(() => {
-    if(!isChecked){
+    if (!isChecked) {
       isChecked = true;
       setIsFetching(true);
       (async () => {
         try {
           const res = await axios.post("/api/users/check");
           console.log(res);
-          setUserLog(res.data.loggedIn, res.data.data.fname, res.data.data.lname,res.data.data.isVerified);
+          setUserLog(
+            res.data.loggedIn,
+            res.data.data.fname,
+            res.data.data.lname,
+            res.data.data.isVerified
+          );
         } catch (error) {
           console.error("Error checking user login:", error);
-        } finally{
+        } finally {
           setIsFetching(false);
         }
       })();
-
     }
   }, []);
 
@@ -86,7 +100,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="w-full px-4 sm:px-4 md:px-24 lg:px-40 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent max-w-screen-2xl mx-auto flex items-center justify-between z-40">
+      <div className="w-full px-4 sm:px-4 md:px-12 lg:px-24 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent max-w-screen-2xl mx-auto flex items-center justify-between z-40">
         <div>
           <NavLink href="/">
             <Image
@@ -98,7 +112,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <ul className="hidden uppercase text-sm font-semibold gap-8 md:flex">
+        <ul className="hidden uppercase text-[12px] lg:text-sm font-semibold gap-8  md:flex">
           <NavLink
             href="../services"
             onClick={closeNav}
@@ -120,48 +134,53 @@ const Navbar = () => {
           >
             Contact us
           </NavLink>
+          {isVerified && (
+            <div>
+              <NavLink
+                href="../dashboard"
+                className="hover:text-accentsme duration-300 hover:scale-110"
+              >
+                Dashboard
+              </NavLink>
+            </div>
+          )}
         </ul>
-        {isFetching && (<div>Loading...</div>)}
+        {isFetching && <div>Loading...</div>}
         {!isFetching && isLogedIn && (
-          <div className="">
-            <div>{fname} {lname}</div>
+          <div className="text-[12px] lg:text-sm ">
+            <div className="hidden md:flex gap-2 items-center uppercase font-semibold pb-2">
+              <FaUserCircle size={20} />
+              {fname}
+            </div>
             {!isVerified && (
-              <div>
-                <div>
-                  Please check your email inbox and verify.
+              <div className="hidden md:block">
+                <div className="flex gap-2 text-yellow-500">
+                  <IoAlertCircle size={24} />
+                  <p className="text-black">
+                    Please check your email to verify.
+                  </p>
                 </div>
-                <div>
-                  resend email.
-                </div>
-              </div>
-            )}
-            {isVerified && (
-              <div>
-                <NavLink
-                  href="../dashboard"
-                  className="hover:text-accentsme duration-300 hover:scale-110"
-                >
-                  Dashboard
-                </NavLink>
+                <div>resend email.</div>
               </div>
             )}
           </div>
         )}
         {!isFetching && !isLogedIn && (
-          <div className="hidden lg:inline-flex gap-8 items-center">
+          <div className="hidden text-[12px] lg:text-sm md:inline-flex gap-8 items-center">
             <NavLink href="../login">
-              <button className="h-14 bg-white text-paragrapgh uppercase text-sm font-semibold rounded-md hover:bg-darkRed hover:text-accentsme duration-300 hover:scale-110 ">
+              <button className="h-14 bg-white text-paragrapgh uppercase  font-semibold rounded-md hover:bg-darkRed hover:text-accentsme duration-300 hover:scale-110 ">
                 Login
               </button>
             </NavLink>
             <NavLink href="../signup">
-              <Button className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300">
+              <Button className="bg-accentsme rounded-[2px] text-[12px] lg:text-sm hover:bg-accentsmehover hover:scale-110 duration-300">
                 SIGNUP
               </Button>
             </NavLink>
           </div>
         )}
 
+        {/* mobile nav */}
         <div
           onClick={() => setNav(!nav)}
           className="cursor-pointer  pr-4 z-50 text-gray-500 md:hidden"
@@ -206,6 +225,55 @@ const Navbar = () => {
             >
               CONTACT US
             </NavLink>
+            {isVerified && (
+              <div>
+                <NavLink
+                  href="../dashboard"
+                  className="text-accentsme font-bold"
+                  onClick={closeNav}
+                >
+                  DASHBOARD
+                </NavLink>
+              </div>
+            )}
+            {isFetching && <div>Loading...</div>}
+            {!isFetching && isLogedIn && (
+              <div className="text-center">
+                <div className="uppercase text-sm font-semibold py-8">
+                  {fname} {lname}
+                </div>
+                {!isVerified && (
+                  <div className="">
+                    <div className="flex items-center gap-2">
+                      <IoAlertCircle size={20} />
+                      <p>Please check your email to verify.</p>
+                    </div>
+                    <div>resend email.</div>
+                  </div>
+                )}
+              </div>
+            )}
+            {!isFetching && !isLogedIn && (
+              <div className="items-center text-center">
+                <NavLink href="../login">
+                  <button
+                    className="h-14 text-paragrapgh uppercase text-sm font-semibold rounded-md hover:bg-darkRed hover:text-accentsme duration-300 hover:scale-110 "
+                    onClick={closeNav}
+                  >
+                    Login
+                  </button>
+                  <br />
+                </NavLink>
+                <NavLink href="../signup">
+                  <Button
+                    className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300"
+                    onClick={closeNav}
+                  >
+                    SIGNUP
+                  </Button>
+                </NavLink>
+              </div>
+            )}
           </ul>
         )}
       </div>
