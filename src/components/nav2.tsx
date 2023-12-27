@@ -12,23 +12,28 @@ import axios from "axios";
 const Navbar = () => {
   const [nav, setNav] = useState(false);
 
+  let isChecked = false;
+
   const closeNav = () => {
     setNav(false);
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [logData, setLogData] = useState({});
 
   useEffect(() => {
-    (async () => {
-      try {
-        const res = await axios.post("/api/users/check");
-        if (res.data.loggedIn) {
-          setIsLoggedIn(true);
+    if(!isChecked){
+      isChecked = true;
+      (async () => {
+        try {
+          const res = await axios.post("/api/users/check");
+          console.log(res);
+          setLogData(res.data);
+        } catch (error) {
+          console.error("Error checking user login:", error);
         }
-      } catch (error) {
-        console.error("Error checking user login:", error);
-      }
-    })();
+      })();
+    }
   }, []);
 
   // resend button
@@ -84,6 +89,10 @@ const Navbar = () => {
               className=""
             />
           </NavLink>
+        </div>
+
+        <div>
+          {JSON.stringify(logData)}
         </div>
 
         <ul className="hidden uppercase text-sm font-semibold gap-8 md:flex">

@@ -4,6 +4,8 @@ import { createNewSession } from "@/helpers/sessionHandler/session";
 import { getSessionById, saveSession } from "@/helpers/sessionHandler/sessionDB";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
+import bcryptjs from "bcryptjs";
+import { GitPullRequestArrow } from "lucide-react";
 
 connect();
 
@@ -16,26 +18,33 @@ export async function POST(request: NextRequest){
     try{
         const jwtToken = request.cookies.get("session")?.value;
         if(jwtToken){
-            const session = await getSessionById(jwtToken);
-            if(session && session.isVerified){
+            const session = await getJwtSessionData(jwtToken);
+            if(session){
+                console.log("already logged");
                 return  NextResponse.json({
-                    message: "Already Signed in",
+                    message: "Already logged in",
                     success: true,
                 },{status: 200});
+            }else{
+                throw "no session"
             }
+        }else{
+            throw "no token"
         }
     }catch(err){
-
+        console.log("login jwt : " + err);
     }
     const {email, password} = await request.json();
 
     try{
         const user = await User.findOne({email});
         if(!user) throw {message: "Email not registerd."};
-        if(!user.isVerified) throw {message: "Email not verified."};
-        if(user.password != password) throw {message: "Email and password not matched."};
+        // if(!user.isVerified) throw {message: "Email not verified."};
 
-        const session = await createNewSession(user._id, true);
+        const passMatch = await bcryptjs.compare(password, user.password);
+        if(!passMatch) throw {message: "Email and Password not matched."};
+
+        const session = await createNewSession(user._id.toString(), true);
         await saveSession(session);
 
         let res = NextResponse.json({

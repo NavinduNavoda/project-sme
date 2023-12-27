@@ -15,27 +15,23 @@ export async function GET(req: NextRequest, { params }: { params: { token: strin
 
         if(userUpdater.verifyTokenExpiry < new Date()) throw "verify token expired.";
 
-        const user = await User.findOneAndUpdate({_id: userUpdater.userId}, {isVerified: true});
+        // const user = await User.findOne({_id: userUpdater.userId});
+        const user = await User.findOneAndUpdate({_id: userUpdater.userId}, {$set: {isVerified: true}});
         if(!user) throw "Invalid verify token.";
 
         const session = await getSessionByUserId(user._id);
         if(session){
             await makeJustVerified(session.sessionId)
+        }else{
+            console.log("no session when verify");
         }
 
         console.log("[+] " + user._id + " verified.");
 
-
-        return NextResponse.json({
-            message: "User verified.",
-            success: true,
-        });
+        return NextResponse.redirect(new URL("/verification/success", req.nextUrl));
 
     }catch(err: any){
         console.log("err verifing user " + err.message);
-        return NextResponse.json({  
-            message: err,
-            success: false, 
-        });
+        return NextResponse.redirect(new URL("/verification/unsuccess", req.nextUrl));
     }
 }
