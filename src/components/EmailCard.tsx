@@ -1,5 +1,5 @@
+"use client";
 import React from "react";
-import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
@@ -8,35 +8,39 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import Link from "next/link";
+import { sendEmail } from "../../public/sendEmail";
+import { Button } from "./ui/button";
 
-const Contactcard = () => {
+const handleButtonClick = () => {
+  sendEmail();
+};
+
+const EmailCard = () => {
   return (
     <div className="w-[300px]">
       <Card className="w-[300px] h-[220px]">
         <CardHeader>
-          <CardTitle>Call now</CardTitle>
-          <CardDescription>Connect by Phone</CardDescription>
+          <CardTitle>Email us</CardTitle>
+          <CardDescription>Send us an Email anytime</CardDescription>
         </CardHeader>
         <CardContent>
           <form>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="framework">+94 777041895</Label>
+                <Label htmlFor="framework">sme@mail.com</Label>
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Link href="tel: +94777041895">
-            <Button className="bg-accentsme  mt-2">Call now</Button>
-          </Link>
+          <Button className="bg-accentsme mt-2" onClick={handleButtonClick}>
+            Send
+          </Button>
         </CardFooter>
       </Card>
     </div>
   );
 };
 
-export default Contactcard;
+export default EmailCard;

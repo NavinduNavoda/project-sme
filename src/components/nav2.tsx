@@ -22,7 +22,7 @@ const Navbar = () => {
   const [logData, setLogData] = useState({});
 
   useEffect(() => {
-    if(!isChecked){
+    if (!isChecked) {
       isChecked = true;
       (async () => {
         try {
@@ -91,9 +91,7 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div>
-          {JSON.stringify(logData)}
-        </div>
+        <div>{JSON.stringify(logData)}</div>
 
         <ul className="hidden uppercase text-sm font-semibold gap-8 md:flex">
           <NavLink
@@ -184,13 +182,15 @@ const Navbar = () => {
         ) : (
           <div className="">
             <h1>Please verify your account</h1>
-            <Button
+            <button
               onClick={handleClick}
               disabled={isButtonDisabled}
-              className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300"
+              className={`underline hover:text-black ${
+                isButtonDisabled ? "disabled hover:none" : ""
+              }`}
             >
               Resend OTP
-            </Button>
+            </button>
 
             {isButtonDisabled && <p>{formatTime(timer)} </p>}
           </div>
