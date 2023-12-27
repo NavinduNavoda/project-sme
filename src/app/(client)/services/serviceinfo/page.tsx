@@ -1,5 +1,5 @@
 import React from "react";
-import clothing from "../../../../public/clothing.png";
+import clothing from "../../../../../public/clothing.png";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
 import EbooksCardList from "@/components/EbooksCardList";

@@ -7,7 +7,7 @@ import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
 import {toast, Toaster} from "react-hot-toast"
 import { useRouter } from 'next/navigation';
-import { useUserLog } from "../dataHolders/store";
+import { useUserLog } from "../../dataHolders/store";
 
 const Sign = () => {
   

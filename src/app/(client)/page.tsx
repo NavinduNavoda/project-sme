@@ -1,8 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import heroBg from "../../public/bgnew.png";
-import "./hutta.css";
+import heroBg from "../../../public/bgnew.png";
 
 // components
 import ServiceCardList from "@/components/ServiceCardList";
