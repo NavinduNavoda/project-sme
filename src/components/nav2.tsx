@@ -7,10 +7,13 @@ import logo from "./smeLogo.svg";
 import logoonly from "../../public/logoonly.svg";
 import { Button } from "./ui/button";
 import { useEffect } from "react";
+import { useUserLog } from "@/app/dataHolders/store";
 import axios from "axios";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+
+  const {setUserLog, setIsFetching, isLogedIn, fname, lname, isVerified, isFetching} = useUserLog();
 
   let isChecked = false;
 
@@ -19,20 +22,24 @@ const Navbar = () => {
   };
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [logData, setLogData] = useState({});
+  // const [logData, setLogData] = useState({});
 
   useEffect(() => {
-    if(!isChecked){
+    if (!isChecked) {
       isChecked = true;
+      setIsFetching(true);
       (async () => {
         try {
           const res = await axios.post("/api/users/check");
           console.log(res);
-          setLogData(res.data);
+          setUserLog(res.data.loggedIn, res.data.data.fname, res.data.data.lname,res.data.data.isVerified);
         } catch (error) {
           console.error("Error checking user login:", error);
+        } finally{
+          setIsFetching(false);
         }
       })();
+
     }
   }, []);
 
@@ -91,10 +98,11 @@ const Navbar = () => {
           </NavLink>
         </div>
 
-        <div>
-          {JSON.stringify(logData)}
-        </div>
+<<<<<<< HEAD
+=======
+        <div>{JSON.stringify(logData)}</div>
 
+>>>>>>> 6b294d0e86499d20769dee02e1fc0abffead27a4
         <ul className="hidden uppercase text-sm font-semibold gap-8 md:flex">
           <NavLink
             href="../services"
@@ -118,18 +126,46 @@ const Navbar = () => {
             Contact us
           </NavLink>
         </ul>
-        <div className="hidden lg:inline-flex gap-8 items-center">
-          <NavLink href="../login">
-            <button className="h-14 bg-white text-paragrapgh uppercase text-sm font-semibold rounded-md hover:bg-darkRed hover:text-accentsme duration-300 hover:scale-110 ">
-              Login
-            </button>
-          </NavLink>
-          <NavLink href="../signup">
-            <Button className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300">
-              SIGNUP
-            </Button>
-          </NavLink>
-        </div>
+        {isFetching && (<div>Loading...</div>)}
+        {!isFetching && isLogedIn && (
+          <div className="">
+            <div>{fname} {lname}</div>
+            {!isVerified && (
+              <div>
+                <div>
+                  Please check your email inbox and verify.
+                </div>
+                <div>
+                  resend email.
+                </div>
+              </div>
+            )}
+            {isVerified && (
+              <div>
+                <NavLink
+                  href="../dashboard"
+                  className="hover:text-accentsme duration-300 hover:scale-110"
+                >
+                  Dashboard
+                </NavLink>
+              </div>
+            )}
+          </div>
+        )}
+        {!isFetching && !isLogedIn && (
+          <div className="hidden lg:inline-flex gap-8 items-center">
+            <NavLink href="../login">
+              <button className="h-14 bg-white text-paragrapgh uppercase text-sm font-semibold rounded-md hover:bg-darkRed hover:text-accentsme duration-300 hover:scale-110 ">
+                Login
+              </button>
+            </NavLink>
+            <NavLink href="../signup">
+              <Button className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300">
+                SIGNUP
+              </Button>
+            </NavLink>
+          </div>
+        )}
 
         <div
           onClick={() => setNav(!nav)}
@@ -178,24 +214,26 @@ const Navbar = () => {
           </ul>
         )}
       </div>
-      <div className="text-right w-full px-4 sm:px-4 md:px-24 lg:px-40  text-paragrapgh lg:text-paragrapgh">
+      {/* <div className="text-right w-full px-4 sm:px-4 md:px-24 lg:px-40  text-paragrapgh lg:text-paragrapgh">
         {isLoggedIn ? (
           <h1 className="py-4">Hello User</h1>
         ) : (
           <div className="">
             <h1>Please verify your account</h1>
-            <Button
+            <button
               onClick={handleClick}
               disabled={isButtonDisabled}
-              className="bg-accentsme rounded-[2px] hover:bg-accentsmehover hover:scale-110 duration-300"
+              className={`underline hover:text-black ${
+                isButtonDisabled ? "disabled hover:none" : ""
+              }`}
             >
               Resend OTP
-            </Button>
+            </button>
 
             {isButtonDisabled && <p>{formatTime(timer)} </p>}
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 };

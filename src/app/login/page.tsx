@@ -8,13 +8,14 @@ import Image from "next/image";
 import Link from "next/link";
 import {toast, Toaster} from "react-hot-toast"
 import { useRouter } from 'next/navigation';
+import { useUserLog } from "../dataHolders/store";
 
 
 
 const Sign = () => {
 
   const {push, refresh} = useRouter();
-
+  const {setIsFetching, setUserLog} = useUserLog();
 
   const logIn = async () => {
     console.log("logingin");
@@ -24,6 +25,7 @@ const Sign = () => {
       const res = await axios.post("/api/users/login", user);
       if(res.data.success){
         toast.success('Logged in Successfully', { id: stoast });
+        checkUser();
         push("/");
       }else{
         toast.error(res.data.error, { id: stoast });
@@ -34,6 +36,18 @@ const Sign = () => {
       console.log(err.message);
     }
   };
+
+  const checkUser = async () => {
+    setIsFetching(true);
+    try {
+      const res = await axios.post("/api/users/check");
+      setUserLog(res.data.loggedIn, res.data.data.fname, res.data.data.lname,res.data.data.isVerified);
+    } catch (error) {
+      console.error("Error checking user login:", error);
+    } finally{
+      setIsFetching(false);
+    }
+  }
 
   const [user, setUser] = useState({
     email: "",

@@ -12,26 +12,30 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
 
-const Contactcard = () => {
+const AddressCard = () => {
   return (
     <div className="w-[300px]">
       <Card className="w-[300px] h-[220px]">
         <CardHeader>
-          <CardTitle>Call now</CardTitle>
-          <CardDescription>Connect by Phone</CardDescription>
+          <CardTitle>Vist us</CardTitle>
+          <CardDescription>
+            Here's our address. Feel free to visit
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <form>
             <div className="grid w-full items-center gap-4">
               <div className="flex flex-col space-y-1.5">
-                <Label htmlFor="framework">+94 777041895</Label>
+                <Label htmlFor="framework">
+                  15/4,1/1 Mission Road 2nd lane, pittakotte.
+                </Label>
               </div>
             </div>
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Link href="tel: +94777041895">
-            <Button className="bg-accentsme  mt-2">Call now</Button>
+          <Link href="https://maps.app.goo.gl/SSaC2ugDfWkkVftw7" target="blank">
+            <Button className=" bg-accentsme">Maps</Button>
           </Link>
         </CardFooter>
       </Card>
@@ -39,4 +43,4 @@ const Contactcard = () => {
   );
 };
 
-export default Contactcard;
+export default AddressCard;

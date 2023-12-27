@@ -7,11 +7,12 @@ import logo from "../../../public/logoonly.svg";
 import Image from "next/image";
 import {toast, Toaster} from "react-hot-toast"
 import { useRouter } from 'next/navigation';
+import { useUserLog } from "../dataHolders/store";
 
 const Sign = () => {
   
   const {push, refresh} = useRouter();
-
+  const {setIsFetching, setUserLog} = useUserLog();
 
   const signUp = async () => {
     console.log("signingUp");
@@ -25,6 +26,7 @@ const Sign = () => {
       
       if(res.data.success) {
         toast.success('Signed Up Successfully', { id: stoast });
+        checkUser();
         push("/");
 
       }
@@ -46,6 +48,18 @@ const Sign = () => {
       setIsLoading(false);
     }
   };
+
+  const checkUser = async () => {
+    setIsFetching(true);
+    try {
+      const res = await axios.post("/api/users/check");
+      setUserLog(res.data.loggedIn, res.data.data.fname, res.data.data.lname,res.data.data.isVerified);
+    } catch (error) {
+      console.error("Error checking user login:", error);
+    } finally{
+      setIsFetching(false);
+    }
+  }
 
   const resend = async() => {
     setIsLoading(true);

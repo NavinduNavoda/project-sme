@@ -6,10 +6,7 @@ import { saveSession } from "@/helpers/sessionHandler/sessionDB";
 
 export async function POST(request: NextRequest){
     const jwtToken = request.cookies.get("session")?.value;
-    let res = NextResponse.json({
-        message: "ckecked",
-        loggedIn: false,
-    },{status: 200});
+    let res = NextResponse.json({},{status: 200});
 
     if(jwtToken){
         try{
@@ -59,6 +56,11 @@ export async function POST(request: NextRequest){
     res = NextResponse.json({
         message: "ckecked",
         loggedIn: false,
+        data:{
+            fname: "",
+            lname: "",
+            isVerified: false
+        }
     },{status: 200});
 
     res.cookies.set("session", "", {
