@@ -65,7 +65,7 @@ export async function POST(request: NextRequest){
             fname,
             lname
         })).save();
-        console.log("[+] New user created : " + user._id);
+        console.log("[+] New user created : " + user._id.toString());
 
         //creating verification
         let verifyTokenString = uuid_v4(); //created string to check incoming verify request.
@@ -81,7 +81,7 @@ export async function POST(request: NextRequest){
         //sending verify email
         await sendVerificationMail(user.email, process.env.API_URL! + "/api/users/verify/" + userUpdater.verifyToken);
 
-        const session = await createNewSession(user._id, false);
+        const session = await createNewSession(user._id.toString(), false);
         await saveSession(session);
 
         let res = NextResponse.json({

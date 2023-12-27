@@ -6,7 +6,8 @@ const renewToMins = 60 * 24 * 2;
 
 export const saveSession = async (session: Session) => {
     //delete pre sessions if exist
-    await SessionMongo.deleteOne({uid: session.uid});
+    await SessionMongo.deleteMany({uid: session.uid});
+   
     const ses = await (new SessionMongo({
         sessionId: session.id,
         uid: session.uid,
@@ -20,7 +21,10 @@ export const saveSession = async (session: Session) => {
 }
 
 export const makeJustVerified = async (id: string) => {
-    await SessionMongo.findOneAndUpdate({sessionId: id}, {justVerified: true});
+    // console.log("justver : " + id);
+    // const ses = await SessionMongo.findOne({sessionId: id});
+    // console.log(JSON.stringify(ses));
+    await SessionMongo.updateOne({sessionId: id}, {$set: {justVerified: true}});
 }
 
 export const getSessionById = async (id: string) => {
@@ -30,7 +34,7 @@ export const getSessionById = async (id: string) => {
         await deleteSessionById(ses.sessionId);
         return null;
     }
-    await SessionMongo.findOneAndUpdate({sessionId: id}, {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))});
+    await SessionMongo.updateOne({sessionId: id}, {$set: {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}});
     return ses;
 }
 
@@ -41,26 +45,27 @@ export const getSessionByUserId = async (uid: string) => {
         await deleteSessionById(ses.sessionId);
         return null;
     }
-    await SessionMongo.findOneAndUpdate({uid: uid}, {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))});
+    await SessionMongo.updateOne({uid: uid}, {$set: {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}});
     return ses;
 }
 
 export const renewSession = async (id: string) => {
-    await SessionMongo.findOneAndUpdate({sessionId: id}, {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))});
+    await SessionMongo.updateOne({sessionId: id}, {$set: {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}});
 }
 
 export const renewAndGetById = async (id: string) => {
-    return await SessionMongo.findOneAndUpdate({sessionId: id}, {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}); 
+    return await SessionMongo.findByIdAndUpdate({sessionId: id}, {$set: {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}}); 
 }
 
 export const renewAndGetByUserId = async (id: string) => {
-    return await SessionMongo.findOneAndUpdate({uid: id}, {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}); 
+    return await SessionMongo.findByIdAndUpdate({uid: id}, {$set: {expire: new Date(new Date().getTime() + (renewToMins * 60 * 1000))}}); 
 }
 
 export const deleteSessionById = async (id: string) => {
-    await SessionMongo.deleteOne({sessionId: id});
+    await SessionMongo.deleteMany({sessionId: id});
+
 }
 
 export const deleteSessionByuserId = async (uid: string) => {
-    await SessionMongo.deleteOne({uid: uid});
+    await SessionMongo.deleteMany({uid: uid});
 }

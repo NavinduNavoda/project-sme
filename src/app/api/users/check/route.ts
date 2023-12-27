@@ -6,13 +6,18 @@ import { saveSession } from "@/helpers/sessionHandler/sessionDB";
 
 export async function POST(request: NextRequest){
     const jwtToken = request.cookies.get("session")?.value;
+    let res = NextResponse.json({
+        message: "ckecked",
+        loggedIn: false,
+    },{status: 200});
+
     if(jwtToken){
         try{
             const session = await getJwtSessionData(jwtToken);
             if(session){
                 const user = await User.findById(session.uid);
                 if(user){ 
-                    let res = NextResponse.json({
+                    res = NextResponse.json({
                         message: "ckecked",
                         data: {
                             fname: user.fname,
@@ -23,8 +28,8 @@ export async function POST(request: NextRequest){
                     },{status: 200});
                     
                     if(!session.isVerified && session.justVerified){
-                        const newSession = await createNewSession(user._id, true);
-                        await saveSession(session);
+                        const newSession = await createNewSession(user._id.toString(), true);
+                        await saveSession(newSession);
 
                         res.cookies.set("session", newSession.jwt, {
                             httpOnly: true,
@@ -35,15 +40,23 @@ export async function POST(request: NextRequest){
                     }
 
                     return res;
+                }else{
+                    console.log("ckeck no user");
                 }
             }
-        }catch(err){
-
+        }catch(err: any){
+            // console.log(err);
+            if(err.code == 11000){
+                console.log("session build error - already exist");
+                return res;
+            }else{
+                console.log(err);
+            }
         }
        
     }
 
-    let res = NextResponse.json({
+    res = NextResponse.json({
         message: "ckecked",
         loggedIn: false,
     },{status: 200});
