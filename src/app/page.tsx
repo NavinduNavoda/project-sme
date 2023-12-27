@@ -52,7 +52,7 @@ export default function Home() {
                 className="rounded-[2px] bg-transparent text-white text-[10px] h-[35px] lg:text-[16px] lg:h-[50px]"
                 variant={"outline"}
               >
-                BOOK AND APPOINTMENT
+                BOOK AN APPOINTMENT
               </Button>
             </div>
           </div>
