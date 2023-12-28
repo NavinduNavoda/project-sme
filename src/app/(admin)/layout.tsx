@@ -1,8 +1,6 @@
 import type { Metadata } from "next";
 import { Chivo } from "next/font/google";
 import "../globals.css";
-import Nav from "@/components/nav2";
-import Footer from "@/components/Footer";
 
 const chivo = Chivo({ subsets: ["latin"] });
 
