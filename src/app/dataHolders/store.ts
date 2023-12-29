@@ -22,3 +22,13 @@ export const useUserLog = create<userLogState>()((set)=>({
         {isLogedIn, fname, lname, isVerified}
     ),
 }));
+
+interface servicesType{
+    services: any[],
+    setServices: (services: []) => void
+}
+
+export const useServices = create<servicesType>()((set)=>({
+    services: [],
+    setServices: (services: []) => set({services}),
+}));

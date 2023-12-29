@@ -26,7 +26,9 @@ const Nav = (props: any) => {
     const {fname} = useUserLog();
 
     return (
-        <div className='flex p-[15px] pt-[50px] w-[250px] h-[100vh] shadow-md'>
+        <div>
+            <div className='w-[250px]'></div>
+        <div className='flex p-[15px] pt-[50px] w-[250px] h-[100vh] shadow-md fixed left-0'>
             <ul className='flex flex-col gap-y-[10px] w-[100%]'>
 
                 <li className='mb-[24px]'>
@@ -76,6 +78,7 @@ const Nav = (props: any) => {
                 </li>
             
             </ul>
+        </div>
         </div>
     )
 }

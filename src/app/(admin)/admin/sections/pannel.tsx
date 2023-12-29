@@ -21,7 +21,7 @@ const Pannel = (props: any) => {
         <div className='flex'>
           <Nav setActive = {setActiveSegment} active={activeSegment}/>
           {(activeSegment == "app") && <Appointments/>}
-          {(activeSegment == "ser") && <Services/>}
+          {(activeSegment == "ser") && <Services adminToken = {props.adminToken}/>}
           {(activeSegment == "boo") && <Books/>}
           {(activeSegment == "cli") && <Clients/>}
           {(activeSegment == "das") && <Dashboard/>}
