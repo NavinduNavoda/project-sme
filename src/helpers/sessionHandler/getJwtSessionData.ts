@@ -6,9 +6,9 @@ export default async function getJwtSessionData(token: string){
     if(!token || token == "") return null;
     try{
         const jwtData = await getJwtData(token);
-        console.log("json data : " + jwtData);
+        console.log("jwt json data : " + jwtData);
         return await getSessionById(jwtData.sid);
     }catch(err){
-        throw "error in getting jwt session"
+        throw err
     }
 }

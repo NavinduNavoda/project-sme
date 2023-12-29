@@ -6,6 +6,7 @@ import Pannel from './sections/pannel'
 import { useUserLog } from "@/app/dataHolders/store";
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
+import {toast, Toaster} from "react-hot-toast"
 
 
 const page = () => {
@@ -54,9 +55,10 @@ const page = () => {
 
   return (
     <div>
+      <Toaster position="top-center" reverseOrder={false} />
       {isFetching && (<div> Loading... </div>)}
-      {!isFetching && isLogedIn && (adminToken == "") && (<LogSection />)}
-      {!isFetching && isLogedIn && (adminToken != "") && (<Pannel />)}
+      {!isFetching && isLogedIn && (adminToken == "") && (<LogSection setAdminToken = {setAdminToken}/>)}
+      {!isFetching && isLogedIn && (adminToken != "") && (<Pannel adminToken = {adminToken}/>)}
     </div>
   )
 }

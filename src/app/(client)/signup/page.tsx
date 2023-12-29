@@ -3,7 +3,7 @@
 import React from "react";
 import axios from "axios";
 import { useState } from "react";
-import logo from "../../../public/logoonly.svg";
+import logo from "../../../../public/logoonly.svg";
 import Image from "next/image";
 import {toast, Toaster} from "react-hot-toast"
 import { useRouter } from 'next/navigation';

@@ -11,38 +11,38 @@ export class Session {
 }
 
 
-export const createNewSession = async (uid: string, isVerified: boolean): Promise<Session> =>{
+export const createNewSession = async (uid: string, isVerified: boolean, isAdmin: boolean): Promise<Session> =>{
     //create sessionId
     const sid = uuid_v4();
 
     //jwt
     // const jwtToken = jwt.sign({sid, isVerified, isAdmin: false}, process.env.JWT_SECRET!, {expiresIn: 60*60*24*365});
-    const jwtToken = await new SignJWT({sid, isVerified, isAdmin: false})
+    const jwtToken = await new SignJWT({sid, isVerified, isAdmin})
     .setProtectedHeader({alg: "HS256"})
     .setJti(nanoid())
     .setIssuedAt()
     .setExpirationTime("365d")
     .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 
-    return new Session(uid, sid, "", jwtToken, isVerified, false, new Date(new Date().getTime() + (createdExpireMins * 60 * 1000)) );
+    return new Session(uid, sid, "", jwtToken, isVerified, isAdmin, new Date(new Date().getTime() + (createdExpireMins * 60 * 1000)) );
 }
 
-export const createAdminSession = async (uid: string): Promise<Session> =>{
-    //create sessionId
-    const sid = uuid_v4();
+// export const createAdminSession = async (uid: string): Promise<Session> =>{
+//     //create sessionId
+//     const sid = uuid_v4();
 
-    //create token
-    const token = uuid_v4();
+//     //create token
+//     const token = uuid_v4();
 
-    //jwt
-    // const jwtToken = jwt.sign({sid, isVerified: true, isAdmin: true}, process.env.JWT_SECRET!, {expiresIn: 60*60*24*365});
-    const jwtToken = await new SignJWT({sid, isVerified: true, isAdmin: true})
-    .setProtectedHeader({alg: "HS256"})
-    .setJti(nanoid())
-    .setIssuedAt()
-    .setExpirationTime("365d")
-    .sign(new TextEncoder().encode(process.env.JWT_SECRET));
+//     //jwt
+//     // const jwtToken = jwt.sign({sid, isVerified: true, isAdmin: true}, process.env.JWT_SECRET!, {expiresIn: 60*60*24*365});
+//     const jwtToken = await new SignJWT({sid, isVerified: true, isAdmin: true})
+//     .setProtectedHeader({alg: "HS256"})
+//     .setJti(nanoid())
+//     .setIssuedAt()
+//     .setExpirationTime("365d")
+//     .sign(new TextEncoder().encode(process.env.JWT_SECRET));
 
     
-    return new Session(uid, sid, token, jwtToken, true, true, new Date(new Date().getTime() + (createdExpireMins * 60 * 1000)));
-}
+//     return new Session(uid, sid, token, jwtToken, true, true, new Date(new Date().getTime() + (createdExpireMins * 60 * 1000)));
+// }

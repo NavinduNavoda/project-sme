@@ -20,6 +20,10 @@ export const saveSession = async (session: Session) => {
     })).save();
 }
 
+export const setToken = async (id: string, token: string) => {
+    await SessionMongo.updateOne({sessionId: id}, {$set: {token}});
+}
+
 export const makeJustVerified = async (id: string) => {
     // console.log("justver : " + id);
     // const ses = await SessionMongo.findOne({sessionId: id});

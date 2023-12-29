@@ -25,7 +25,7 @@ export async function POST(request: NextRequest){
                     },{status: 200});
                     
                     if(!session.isVerified && session.justVerified){
-                        const newSession = await createNewSession(user._id.toString(), true);
+                        const newSession = await createNewSession(user._id.toString(), true, user.isAdmin);
                         await saveSession(newSession);
 
                         res.cookies.set("session", newSession.jwt, {

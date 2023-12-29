@@ -1,42 +1,33 @@
 "use client"
 
+import Nav from './features/nav'
+
 import { Button } from '@/components/ui/button'
 import React, { useState } from 'react'
-import {
-    Drawer,
-    DrawerClose,
-    DrawerContent,
-    DrawerDescription,
-    DrawerFooter,
-    DrawerHeader,
-    DrawerTitle,
-    DrawerTrigger,
-  } from "@/components/ui/drawer"
+import Appointments from './features/appointments'
+import Services from './features/services'
+import Books from './features/books'
+import Clients from './features/clients'
+import Dashboard from './features/dashboard'
+import Settings from './features/settings'
 
-const Pannel = () => {
+const Pannel = (props: any) => {
 
-  const [open, setOpen] = useState(false);
-
+  const [activeSegment, setActiveSegment] = useState("app");
 
   return (
     <div>
-        <Button onClick={()=>{setOpen(!open)}}>Butt</Button>
 
-        <Drawer open={open} onOpenChange={setOpen}>
-        {/* <DrawerTrigger>Open</DrawerTrigger> */}
-        <DrawerContent>
-            <DrawerHeader>
-            <DrawerTitle>Are you sure absolutely sure?</DrawerTitle>
-            <DrawerDescription>This action cannot be undone.</DrawerDescription>
-            </DrawerHeader>
-            <DrawerFooter>
-            <Button>Submit</Button>
-            <DrawerClose>
-                <Button variant="outline">Cancel</Button>
-            </DrawerClose>
-            </DrawerFooter>
-        </DrawerContent>
-        </Drawer>
+        <div className='flex'>
+          <Nav setActive = {setActiveSegment} active={activeSegment}/>
+          {(activeSegment == "app") && <Appointments/>}
+          {(activeSegment == "ser") && <Services/>}
+          {(activeSegment == "boo") && <Books/>}
+          {(activeSegment == "cli") && <Clients/>}
+          {(activeSegment == "das") && <Dashboard/>}
+          {(activeSegment == "set") && <Settings/>}
+        </div>
+
     </div>
   )
 }
