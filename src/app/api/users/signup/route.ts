@@ -81,7 +81,7 @@ export async function POST(request: NextRequest){
         //sending verify email
         await sendVerificationMail(user.email, process.env.API_URL! + "/api/users/verify/" + userUpdater.verifyToken);
 
-        const session = await createNewSession(user._id.toString(), false);
+        const session = await createNewSession(user._id.toString(), false, false);
         await saveSession(session);
 
         let res = NextResponse.json({

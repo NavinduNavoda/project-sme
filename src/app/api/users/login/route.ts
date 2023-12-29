@@ -1,6 +1,6 @@
 import connect from "@/db/connect";
 import getJwtSessionData from "@/helpers/sessionHandler/getJwtSessionData";
-import { createNewSession } from "@/helpers/sessionHandler/session";
+import { createNewSession} from "@/helpers/sessionHandler/session";
 import { getSessionById, saveSession } from "@/helpers/sessionHandler/sessionDB";
 import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
@@ -44,7 +44,7 @@ export async function POST(request: NextRequest){
         const passMatch = await bcryptjs.compare(password, user.password);
         if(!passMatch) throw {message: "Email and Password not matched."};
 
-        const session = await createNewSession(user._id.toString(), true);
+        const session = await createNewSession(user._id.toString(), user.isVerified, user.isAdmin);
         await saveSession(session);
 
         let res = NextResponse.json({

@@ -30,6 +30,11 @@ export async function middleware(req: NextRequest){
         if(!(isLogedIn && isVerified)) return NextResponse.redirect(new URL("/", req.nextUrl));
     }
 
+    if(path == "/admin"){
+        if(!(isLogedIn && isVerified && isAdmin)) return NextResponse.redirect(new URL("/", req.nextUrl));
+
+    }
+
 }
 
 
@@ -42,6 +47,7 @@ export const config = {
         "/contact",
         "/services",
         "/about",
-        "/dashboard" 
+        "/dashboard",
+        "/admin"
     ]
 }
