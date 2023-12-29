@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const EbooksCard = () => {
   return (
-    <div className="card w-[235px] 2xl:w-[270px] mb-8 mx-auto">
+    <div className="card w-[225px] 2xl:w-[260px] mb-8 mx-auto">
       <figure>
         <img
           className="w-full hover:scale-110 duration-300"

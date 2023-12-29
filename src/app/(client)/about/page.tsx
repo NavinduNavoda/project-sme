@@ -4,7 +4,7 @@ const About = () => {
   return (
     <div className="">
       <div className="m min-h-screen bg-lowwhite flex flex-col justify-center items-center px-4 sm:px-4 md:px-24 lg:px-40">
-        <h1 className="font-bold text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[50px] 2xl:text-[60px]  xl:mx-auto font-montserrat text-paragrapgh text-center mx-auto mb-12 w-auto">
+        <h1 className="font-bold text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[50px] 2xl:text-[60px]  xl:mx-auto font-montserrat text-paragrapgh text-center mx-auto mt-16 mb-0 w-auto">
           <span className="text-accentsme ">Our mission </span> is to provide
           managers and leaders in the SME sector with the desired tools,
           frameworks, and expertise to help them create and execute their

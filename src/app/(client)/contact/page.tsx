@@ -1,7 +1,4 @@
-import AddressCard from "@/components/AddressCard";
 import ContactUsList from "@/components/ContactUsList";
-import Contactcard from "@/components/Contactcard";
-import EmailCard from "@/components/EmailCard";
 import React from "react";
 
 const Contact = () => {
@@ -16,7 +13,7 @@ const Contact = () => {
         </p>
         <ContactUsList />
       </div>
-      <div className="px-4 sm:px-4 md:px-24 lg:px-40 py-24 ">
+      <div className="px-4 sm:px-4 md:px-12 lg:px-24 py-24 ">
         <h1 className="font-bold pt-8 uppercase text-[28px] font-montserrat text-paragrapgh">
           Reach out to us
         </h1>

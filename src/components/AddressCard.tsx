@@ -17,7 +17,7 @@ const AddressCard = () => {
     <div className="w-[300px]">
       <Card className="w-[300px] h-[220px]">
         <CardHeader>
-          <CardTitle>Vist us</CardTitle>
+          <CardTitle>Visit us</CardTitle>
           <CardDescription>
             Here's our address. Feel free to visit
           </CardDescription>

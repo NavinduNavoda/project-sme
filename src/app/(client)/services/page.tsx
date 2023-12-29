@@ -5,7 +5,7 @@ import React from "react";
 
 const Services = () => {
   return (
-    <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+    <div className="px-4 sm:px-4 md:px-12 lg:px-24">
       <div>
         {/* services list */}
         <h1 className="font-bold pt-8 uppercase text-[28px] font-montserrat text-paragrapgh">

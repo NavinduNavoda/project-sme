@@ -7,7 +7,7 @@ import EbooksCardList from "@/components/EbooksCardList";
 const ServiceInfo = () => {
   return (
     <div>
-      <div className="px-4 sm:px-4 md:px-24 lg:px-40">
+      <div className="px-4 sm:px-4 md:px-12 lg:px-24">
         <h1 className="font-bold text-[28px] pt-8 font-montserrat text-paragrapgh mb-12">
           BOOK AN APPOINTMENT FOR,
         </h1>
@@ -20,7 +20,7 @@ const ServiceInfo = () => {
           ></Image>
 
           <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-            <h1 className="font-bold text-[60px] font-montserrat text-paragrapgh mb-12 w-[900px]">
+            <h1 className="font-bold text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[50px] 2xl:text-[60px] xl:mx-auto font-montserrat text-paragrapgh text-center mx-auto mt-16 mb-0 2xl:w-[1000px]">
               Unveiling Your Business's Radiant Potential: Cosmetic Consultancy
               for Success!
             </h1>
