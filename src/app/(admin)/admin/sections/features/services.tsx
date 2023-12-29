@@ -11,20 +11,12 @@ import {
     DrawerTitle,
     DrawerTrigger,
 } from "@/components/ui/drawer"
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card'
+
 import { Checkbox } from '@/components/ui/checkbox'
 
 import { Textarea } from "@/components/ui/textarea"
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
-import { VscDiffAdded } from "react-icons/vsc";
 import {toast} from "react-hot-toast"
 import axios from 'axios'
 import RefreshButton from './components/refreshButton'
@@ -34,6 +26,7 @@ const Services = (props: any) => {
 
     const [addCardDrawer, setAddCardDrawer] = useState(false);
     const [drawerGoal, setDrawerGoal] = useState("new");
+    const [usingServiceId, setUsingServiceId] = useState("");
     const {services, setServices} = useServices();
 
     useEffect(()=>{
@@ -96,9 +89,7 @@ const Services = (props: any) => {
 
             if((await res.json()).success){
                 toast.success('New service added', { id: stoast });
-                console.log("succ");
             }else{
-                console.log("unsucc");
                 toast.error('Adding new service unsuccessfull', { id: stoast });
             }
 
@@ -115,17 +106,79 @@ const Services = (props: any) => {
 
     const updateService = async () => {
 
+         const stoast = toast.loading("Uploading Data");
+        
+        try{
+            const data = new FormData();
+            if(serviceDetails.thumbnail) data.set("thumbnail", serviceDetails.thumbnail);
+            if(serviceDetails.pic) data.set("pic", serviceDetails.pic);
+            data.set("title", serviceDetails.title);
+            data.set("description", serviceDetails.description);
+            data.set("yt", serviceDetails.yt);
+            data.set("price", serviceDetails.price);
+            data.set("top", String(serviceDetails.top));
+            data.set("content", serviceDetails.content);
+            data.set("adminToken", props.adminToken);
+            data.set("_id", usingServiceId);
+            
+            const res = await fetch("/api/services", {
+                method: "PUT",
+                body: data
+            });
+    
+            if(!res.ok) throw "Service not updated."
+
+            if((await res.json()).success){
+                toast.success('New service added', { id: stoast });
+            }else{
+                toast.error('Updating service unsuccessfull', { id: stoast });
+            }
+
+        }catch(e){
+            console.log(e);
+            toast.error('Updating service unsuccessfull', { id: stoast });
+        }
+
         refreshServices();
+        setAddCardDrawer(!addCardDrawer);
     }
 
     const deleteService = async () => {
 
+        const stoast = toast.loading("Deleting Service");
+        
+        try{
+            const data = new FormData();
+
+            data.set("adminToken", props.adminToken);
+            data.set("_id", usingServiceId);
+            
+            const res = await fetch("/api/services", {
+                method: "DELETE",
+                body: data
+            });
+    
+            if(!res.ok) throw "Service not deleted."
+
+            if((await res.json()).success){
+                toast.success('Service Deleted', { id: stoast });
+            }else{
+                toast.error('Deleting service unsuccessfull', { id: stoast });
+            }
+
+        }catch(e){
+            console.log(e);
+            toast.error('Deleting service unsuccessfull', { id: stoast });
+        }
+
         refreshServices();
+        setAddCardDrawer(!addCardDrawer);
     }
 
     const viewService = (index: number) => {
         if(index == -1) {
             setDrawerGoal("new");
+            setUsingServiceId("");
             setServiceDetaills({
                 title : "",
                 description : "",
@@ -138,6 +191,7 @@ const Services = (props: any) => {
             }); 
         }else{
             setDrawerGoal("update");
+            setUsingServiceId(services[index]._id);
             setServiceDetaills(
                 {
                     title : services[index].title!,
