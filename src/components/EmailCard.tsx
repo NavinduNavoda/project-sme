@@ -18,7 +18,7 @@ const handleButtonClick = () => {
 
 const EmailCard = () => {
   return (
-    <div className="w-[300px]">
+    <div className="w-[300px] hover:scale-110 duration-300">
       <Card className="w-[300px] h-[220px]">
         <CardHeader>
           <CardTitle>Email us</CardTitle>
@@ -34,7 +34,10 @@ const EmailCard = () => {
           </form>
         </CardContent>
         <CardFooter className="flex justify-between">
-          <Button className="bg-accentsme mt-2" onClick={handleButtonClick}>
+          <Button
+            className="bg-accentsme mt-6 hover:scale-105 duration-300"
+            onClick={handleButtonClick}
+          >
             Send
           </Button>
         </CardFooter>

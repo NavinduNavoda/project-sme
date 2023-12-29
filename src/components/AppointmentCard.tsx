@@ -1,8 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { HiArrowLongRight } from "react-icons/hi2";
 
-const ServiceCard = () => {
+const AppointmentCard = () => {
   return (
     <div className="card w-[225px] 2xl:w-[260px] mb-8 mx-auto">
       <figure>
@@ -19,14 +18,18 @@ const ServiceCard = () => {
         <h2 className="card-title text-paragrapgh text-[20px] font-montserrat font-black">
           COSMETIC BRAND
         </h2>
-        <p className="text-[16px] text-paragrapgh opacity-[.7] tracking-wide py-4">
+        <p className="text-[16px] text-paralight tracking-wide py-4">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor.
+          eiusmod tempor incididunt ut labore et
         </p>
         <Link href="/">
-          <div className="card-actions flex text-accentsme">
-            <button className="text-[16px] font-bold mr-[10px]">BUY NOW</button>
-            <HiArrowLongRight size={24} />
+          <div className="card-actions flex text-paralight  justify-between">
+            <button className="text-[16px]  hover:text-paragrapgh duration-300 hover:scale-105">
+              2024/01/01
+            </button>
+            <button className="text-[16px] text-accentsme hover:text-accentsme duration-300 hover:scale-105  ">
+              No:01
+            </button>
           </div>
         </Link>
       </div>
@@ -34,4 +37,4 @@ const ServiceCard = () => {
   );
 };
 
-export default ServiceCard;
+export default AppointmentCard;

@@ -1,7 +1,4 @@
-import AddressCard from "@/components/AddressCard";
 import ContactUsList from "@/components/ContactUsList";
-import Contactcard from "@/components/Contactcard";
-import EmailCard from "@/components/EmailCard";
 import React from "react";
 
 const Contact = () => {
@@ -16,11 +13,12 @@ const Contact = () => {
         </p>
         <ContactUsList />
       </div>
-      <div className="px-4 sm:px-4 md:px-24 lg:px-40 py-24 ">
-        <h1 className="font-bold pt-8 uppercase text-[28px] font-montserrat text-paragrapgh">
+      <div className="px-4 sm:px-4 md:px-12 lg:px-24 py-24 ">
+        <h1 className="font-bold text-[20px] md:text-[24px] lg:text-[28px] font-montserrat uppercase text-paragrapgh">
           Reach out to us
         </h1>
-        <p className="text-[14px] sm:text-[14px] md:text-[16px] lg:text-[16px] xl:text-[16px] 2xl:text-[16px] text-paralight tracking-wide py-4 leading-relaxed mb-12 ">
+
+        <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12">
           At SME, we welcome your inquiries and value the opportunity to connect
           with you. We are here to assist you with tailored solutions that meet
           your unique business needs. Whether you have questions about our
