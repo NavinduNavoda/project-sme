@@ -18,14 +18,14 @@ export default function Home() {
     <main className="">
       <div className="mb-32 sm:mb-12 md:mb-0">
         <div className="px-4 sm:px-4 md:px-24 lg:px-40 pt-4 sm:pt-4 md:pt-4">
-          <p className="text-[10px] sm:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[30px] 2xl:text-[34px] tracking-wide text-[#4C6575] font-black leading-none uppercase">
+          <p className="text-[10px] sm:text-[14px] md:text-[18px] lg:text-[22px] xl:text-[24px] 2xl:text-[34px] tracking-wide text-[#4C6575] font-black leading-none uppercase">
             your trusted partner for <br />
             achieving your strategic <br /> development
           </p>
         </div>
         <div>
           <div className="flex">
-            <p className="relative px-4 sm:px-4 md:px-24 lg:px-40 text-[70px] sm:text-[100px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[250px] font-montserrat font-black text-accentsme leading-none z-20">
+            <p className="relative px-4 sm:px-4 md:px-24 lg:px-40 text-[70px] sm:text-[100px] md:text-[110px] lg:text-[150px] xl:text-[180px] 2xl:text-[250px] font-montserrat font-black text-accentsme leading-none z-20">
               GOALS
             </p>
             <Scroll />
@@ -36,7 +36,7 @@ export default function Home() {
           </p>
           <div className="absolute px-4 sm:px-4 md:px-24 lg:px-40 z-20 w-full lg:mt-[150px] xl:mt-[170px] 2xl:mt-[200px] lg:flex xl:flex 2xl:flex items-center justify-between mt-24">
             <div>
-              <p className="text-white uppercase font-bold text-[10px] 2xl:text-[16px] w-[200px] sm:w-[200px] md:w-[250px] lg:w-[350px] xl:w-[400px] 2xl:w-[500px]">
+              <p className="text-white uppercase font-bold text-[10px] lg:text-[14px] 2xl:text-[16px] w-[200px] sm:w-[200px] md:w-[250px] lg:w-[350px] xl:w-[400px] 2xl:w-[500px]">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
                 eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
                 enim ad minim.
@@ -44,11 +44,11 @@ export default function Home() {
             </div>
 
             <div className="flex z-20 gap-8 mt-4 sm:mt-4 md:mt-4 lg:mt-0">
-              <Button className="bg-white text-paragrapgh rounded-[2px] hover:bg-accentsme w-auto text-[10px] h-[35px] lg:text-[16px] lg:h-[50px]">
+              <Button className="bg-white text-paragrapgh rounded-[2px] hover:bg-accentsme w-auto text-[10px] h-[35px] lg:text-[14px] lg:h-[50px]">
                 CONTACT US
               </Button>
               <Button
-                className="rounded-[2px] bg-transparent text-white text-[10px] h-[35px] lg:text-[16px] lg:h-[50px]"
+                className="rounded-[2px] bg-transparent text-white text-[10px] h-[35px] lg:text-[14px] lg:h-[50px]"
                 variant={"outline"}
               >
                 BOOK AN APPOINTMENT
