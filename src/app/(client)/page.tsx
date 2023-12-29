@@ -2,12 +2,12 @@
 
 import Image from "next/image";
 import heroBg from "../../../public/bgnew.png";
+import "../custom.css";
 
 // components
 import ServiceCardList from "@/components/ServiceCardList";
 import Accordian from "@/components/Accordian";
 import Timeline from "@/components/Timeline";
-import svgPath from "../../public/timelinebg.svg";
 import Scroll from "@/components/ScrollButton";
 import { Button } from "@/components/ui/button";
 
@@ -28,7 +28,7 @@ export default function Home() {
             <p className="relative px-4 sm:px-4 md:px-24 lg:px-40 text-[70px] sm:text-[100px] md:text-[110px] lg:text-[150px] xl:text-[200px] 2xl:text-[250px] font-montserrat font-black text-accentsme leading-none z-20">
               GOALS
             </p>
-            {/* <Scroll /> */}
+            <Scroll />
           </div>
           <p className="absolute px-4 pt-2 sm:pt-4 md:pt-6 lg:pt-10 xl:pt-12 2xl:pt-12 sm:px-4 md:px-24 lg:px-40 text-[16px] sm:text-[20px] md:text-[28px] lg:text-[36px] xl:text-[50px] 2xl:text-[64px] font-montserrat font-black text-white leading-none z-20">
             WE GUIDE <br />
@@ -64,12 +64,15 @@ export default function Home() {
           />
         </div>
       </div>
+
+      {/* ############# hero section ends ############### */}
+
       {/* cards section */}
       <div className="px-4 sm:px-4 md:px-24 lg:px-36">
-        <h1 className="font-bold text-[28px] font-montserrat uppercase text-paragrapgh">
+        <h1 className="font-bold text-[20px] md:text-[24px] lg:text-[28px] font-montserrat uppercase text-paragrapgh">
           Our top services and products
         </h1>
-        <p className="text-[12px] text-paralight tracking-wide py-4 leading-none mb-12">
+        <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12 ">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor.
         </p>
@@ -79,10 +82,10 @@ export default function Home() {
 
       {/* appointment section */}
       <div className="px-4 sm:px-4 md:px-24 lg:px-40">
-        <h1 className="font-bold pt-8 text-[28px] font-montserrat text-paragrapgh">
+        <h1 className="font-bold text-[20px] md:text-[24px] lg:text-[28px] font-montserrat uppercase text-paragrapgh">
           BOOK AN APPOINTMENT FOR,
         </h1>
-        <p className="text-[12px] text-paralight tracking-wide py-4 leading-none mb-12">
+        <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor onsectetur adipiscing elit. Sed do.
         </p>
@@ -100,27 +103,19 @@ export default function Home() {
           <div className="w-full 2xl:w-1/2 px-8 md:px-16 mx-auto">
             <Accordian />
           </div>
-          {/* image */}
         </div>
       </section>
 
       <div className="px-4 sm:px-4 md:px-24 lg:px-40">
-        <h1 className="font-bold pt-8 text-[28px] font-montserrat uppercase text-paragrapgh">
+        <h1 className="font-bold text-[20px] md:text-[24px] lg:text-[28px] font-montserrat uppercase text-paragrapgh">
           how to book an appointment
         </h1>
-        <p className="text-[12px] text-paralight tracking-wide py-4 leading-none ">
+        <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12">
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
           eiusmod tempor onsectetur adipiscing elit. Sed do.
         </p>
       </div>
-
       <Timeline />
-      {/* <Image
-        src={svgPath}
-        width={1920}
-        alt="Hero background"
-        className="top-1/2 transform -translate-y-1/4 cover z-0"
-      /> */}
     </main>
   );
 }

@@ -58,7 +58,7 @@ const Footer = () => {
               <Textarea placeholder="Please provide us with your email, and we will contact you soon." />
               <Button className=" bg-paragrapgh rounded-[2px]">Send</Button>
             </div>
-            <div className="flex lg:p-5 py-5 px-8 justify-between sm:px-12 md:px-2 lg:px-12">
+            <div className="flex lg:p-5 py-5  justify-between sm:px-12 md:px-2 lg:px-12 sm:gap-8">
               <FaInstagram
                 size={30}
                 className="cursor-pointer text-[#4A6373] hover:text-yellow-600"
@@ -78,7 +78,7 @@ const Footer = () => {
             </div>
           </div>
         </div>
-        <p className="text-[12px] font-bold text-[#8898A2] tracking-wide py-4 px-4 mx-auto md:mx-0 leading-wide text-center w-96 md:text-left">
+        <p className="text-[12px] font-bold text-[#8898A2] tracking-wide py-4 mx-auto md:mx-0 leading-wide text-center w-72 sm:w-72  md:text-left">
           ©2023 SME Strategic Development . All rights reserved. Designed and
           Developed By Tringledo.
         </p>

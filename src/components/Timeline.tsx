@@ -5,13 +5,13 @@ import { timelineData } from "../../public/datalist";
 const Timeline = () => {
   return (
     <div className="px-4 sm:px-4 md:px-24 lg:px-40">
-      <div className="w-3/4 mx-auto hidden sm:hidden  lg:block">
+      <div className="w-3/4 mx-auto hidden sm:hidden lg:block mb-24">
         {timelineData.map((item, index) => (
           <div className="flex flex-row w-full" key={item.id}>
             {index % 2 === 0 ? (
               // Left column
-              <div className="w-2/5 px-2 py-10">
-                <div className="flex flex-col w-full rounded-lg shadow bg-white px-4 py-5">
+              <div className="w-2/5 px-2 py-10 hover:scale-125 duration-500 cursor-default ">
+                <div className="flex flex-col w-full rounded-lg shadow bg-white px-4 py-5 hover:bg-lowwhite">
                   <div className="text-gray-600 mb-2 flex justify-between">
                     <div className="font-bold">{item.title}</div>
                     <div className="flex flex-row">
@@ -33,7 +33,7 @@ const Timeline = () => {
             {/* Line column */}
             <div className="w-1/5  flex justify-center">
               <div className="relative flex h-full w-1 bg-accentsme items-center justify-center">
-                <div className="absolute flex flex-col justify-center h-20 w-20 rounded-full border-4 border-accentsme leading-none text-center z-10 bg-white font-thin">
+                <div className="absolute flex flex-col justify-center h-20 w-20  leading-none text-center z-10 bg-white font-bold uppercase">
                   <div>{item.step}</div>
                 </div>
               </div>
@@ -41,8 +41,8 @@ const Timeline = () => {
             {index % 2 !== 0 ? (
               // Left column
               <div className="w-2/5 px-2 py-10">
-                <div className="flex flex-col w-full rounded-lg shadow bg-white px-4 py-5">
-                  <div className="text-gray-600 mb-2 flex justify-between">
+                <div className="flex flex-col w-full rounded-lg shadow bg-white px-4 py-5 hover:scale-125 duration-500 cursor-default hover:bg-lowwhite">
+                  <div className="text-gray-600 mb-2 flex justify-between ">
                     <div className="font-bold">{item.title}</div>
                     <div className="flex flex-row">
                       <button className="text-blue-500 mr-2 hover:text-blue-300 transition duration-200">
@@ -90,10 +90,10 @@ const Timeline = () => {
                       <h3 className="text-[16px] font-semibold uppercase text-accentsme">
                         {item.title}
                       </h3>
-                      <time className="text-[14px]  uppercase text-paragrapgh">
+                      <time className="text-[14px]  uppercase text-paragrapgh font-bold">
                         {item.step}
                       </time>
-                      <p className="mt-3">{item.content}</p>
+                      <p className="mt-3 text-paragrapgh">{item.content}</p>
                     </div>
                   ))}
                 </div>

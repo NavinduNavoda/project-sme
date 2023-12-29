@@ -15,7 +15,8 @@ const Accordian = () => {
       <Accordion
         type="single"
         collapsible
-        className="w-[300px] sm:w-[400px] md:w-[500px] lg:w-[600px] mx-auto "
+        defaultValue="item-1"
+        className="w-[290px] sm:w-[400px] md:w-[500px] lg:w-[600px] mx-auto mb-24"
       >
         {accordionData.map((item) => (
           <AccordionItem key={item.id} value={item.id} className="my-1">
