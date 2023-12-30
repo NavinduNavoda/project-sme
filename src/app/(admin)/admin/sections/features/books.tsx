@@ -228,7 +228,7 @@ const Book = (props: any) => {
                 {
                     books.map((e, i)=>{
                         return (
-                            <div onClick={()=>{viewService(i)}}>
+                            <div key={i} onClick={()=>{viewService(i)}}>
                                 <ServiceCard data = {e} type = "book"/>
                             </div>
                         );

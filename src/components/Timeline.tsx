@@ -71,7 +71,7 @@ const Timeline = () => {
               <div className="col-span-12 sm:col-span-3">
                 <div className="text-center sm:text-lef mb-8 before:block before:w-24 before:h-3 before:mb-5 before:rounded-md ">
                   <p className="text-paralight text-[16px] text-left pl-8">
-                    Follow these steps one after the other, and you'll be good
+                    Follow these steps one after the other, and you&apos;ll be good
                     to go.
                   </p>
                 </div>

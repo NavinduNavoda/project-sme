@@ -5,7 +5,7 @@ import { join } from "path";
 import { writeFile, mkdir, unlink } from "fs/promises";
 import {rimraf} from "rimraf";
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
     const jwtToken = request.cookies.get("session")?.value;
     if(jwtToken){
         try{
@@ -77,7 +77,7 @@ export async function POST(request: NextRequest){
 
 }
 
-export async function PUT(request: NextRequest){
+export async function PUT(request: NextRequest): Promise<any>{
 
     console.log("update request recieved.");
 
@@ -172,7 +172,7 @@ export async function PUT(request: NextRequest){
 
 }
 
-export async function DELETE(request: NextRequest){
+export async function DELETE(request: NextRequest): Promise<any>{
     console.log("delete request recieved.");
 
     const jwtToken = request.cookies.get("session")?.value;
@@ -204,7 +204,7 @@ export async function DELETE(request: NextRequest){
 }
 
 
-export async function GET(request: NextRequest){
+export async function GET(request: NextRequest): Promise<any>{
     const services = await Service.find({});
     return NextResponse.json(services, {status: 200});
 }

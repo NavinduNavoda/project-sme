@@ -9,7 +9,7 @@ import { GitPullRequestArrow } from "lucide-react";
 
 connect();
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
 
     console.log("[*] login request recieved.")
 

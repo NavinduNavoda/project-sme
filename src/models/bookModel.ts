@@ -19,6 +19,7 @@ const bookSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please enter content."]
     },
+    relatedServices: [String],
     top: Boolean,
     thumbnail: String,
     pic: String,

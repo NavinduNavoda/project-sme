@@ -9,7 +9,7 @@ import { useRouter } from 'next/navigation';
 import {toast, Toaster} from "react-hot-toast"
 
 
-const page = () => {
+const Page = () => {
 
   const [adminToken, setAdminToken] = useState("");
   const {
@@ -63,4 +63,4 @@ const page = () => {
   )
 }
 
-export default page
+export default Page

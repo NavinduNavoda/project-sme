@@ -6,7 +6,7 @@ import { getSessionByUserId, makeJustVerified } from "@/helpers/sessionHandler/s
 
 connect();
 
-export async function GET(req: NextRequest, { params }: { params: { token: string } }) {
+export async function GET(req: NextRequest, { params }: { params: { token: string } }): Promise<any> {
     //todo:: ddos protect
     try{
         const userUpdater = await UserUpdater.findOne({verifyToken: params.token});
