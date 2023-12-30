@@ -32,7 +32,7 @@ const handleErrors = (err: any) => {
 }
 
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
 
     console.log("[*] signup request recieved.")
 

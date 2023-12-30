@@ -19,7 +19,7 @@ const AddressCard = () => {
         <CardHeader>
           <CardTitle>Visit us</CardTitle>
           <CardDescription>
-            Here's our address. Feel free to visit
+            Here&apos;s our address. Feel free to visit
           </CardDescription>
         </CardHeader>
         <CardContent>

@@ -4,8 +4,9 @@ import { join } from "path";
 import { writeFile, mkdir, unlink } from "fs/promises";
 import {rimraf} from "rimraf";
 import Book from "@/models/bookModel";
+import { ResponseCookies } from "next/dist/compiled/@edge-runtime/cookies";
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
 
     console.log("new book post");
     const jwtToken = request.cookies.get("session")?.value;
@@ -99,7 +100,7 @@ export async function POST(request: NextRequest){
 
 }
 
-export async function PUT(request: NextRequest){
+export async function PUT(request: NextRequest): Promise<any>{
 
     console.log("update request recieved.");
 
@@ -210,7 +211,7 @@ export async function PUT(request: NextRequest){
 
 }
 
-export async function DELETE(request: NextRequest){
+export async function DELETE(request: NextRequest): Promise<any>{
     console.log("delete request recieved.");
 
     const jwtToken = request.cookies.get("session")?.value;
@@ -241,7 +242,7 @@ export async function DELETE(request: NextRequest){
 }
 
 
-export async function GET(request: NextRequest){
+export async function GET(request: NextRequest): Promise<any>{
     const books = await Book.find({});
     return NextResponse.json(books, {status: 200});
 }

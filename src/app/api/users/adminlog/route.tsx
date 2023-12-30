@@ -5,7 +5,7 @@ import bcryptjs from "bcryptjs"
 import { nanoid } from "nanoid";
 import { setToken } from "@/helpers/sessionHandler/sessionDB";
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
     const jwtToken = request.cookies.get("session")?.value;
 
     if(jwtToken){

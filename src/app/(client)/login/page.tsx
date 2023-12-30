@@ -115,7 +115,7 @@ const Sign = () => {
               </div>
 
               <div className="mt-3 text-xs flex justify-between items-center text-[#002D74]">
-                <p>Don't have an account?</p>
+                <p>Don&apos;t have an account?</p>
                 <Link href="../signup">
                   <button className="py-2 px-5 bg-white border hover:scale-110 duration-300">
                     Register

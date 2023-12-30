@@ -10,7 +10,7 @@ import getJwtSessionData from "@/helpers/sessionHandler/getJwtSessionData";
 
 connect();
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
     
     try{
         const jwtToken = request.cookies.get("session")?.value;        

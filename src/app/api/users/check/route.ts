@@ -4,7 +4,7 @@ import { createNewSession } from "@/helpers/sessionHandler/session";
 import User from "@/models/userModel";
 import { saveSession } from "@/helpers/sessionHandler/sessionDB";
 
-export async function POST(request: NextRequest){
+export async function POST(request: NextRequest): Promise<any>{
     const jwtToken = request.cookies.get("session")?.value;
     let res = NextResponse.json({},{status: 200});
 

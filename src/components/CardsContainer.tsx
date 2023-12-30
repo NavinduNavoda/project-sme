@@ -17,8 +17,9 @@ const CardsContainer: React.FC = () => {
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      {data.map((item: any) => (
+      {data.map((item: any, i) => (
         <Card1
+          key = {i}
           cardKey={item._id} // or another unique identifier
           title={item.title}
           description={item.description}
