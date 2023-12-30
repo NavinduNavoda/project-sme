@@ -25,10 +25,10 @@ const Footer = () => {
                 />
               </Link>
               <p className="text-[14px] text-paralight tracking-wide pt-6 leading-wide sm:px-24 md:px-0 md:mr-16 text-center md:text-left xl:w-[500px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim. Lorem ipsum dolor sit amet dolore magna aliqua.
-                Ut enim ad minim. Lorem ipsum dolor sit amet.
+                Unlock the full potential of your business with our expert
+                guidance. We are committed to steering you towards financial
+                prosperity and strategic growth. Partner with us, and let's
+                embark on a journey where your aspirations meet achievement.
               </p>
             </div>
             <div className="text-center text-accentsme font-montserrat font-bold text-[12px] pb-6 md:mx-0 md:text-left">
@@ -79,8 +79,9 @@ const Footer = () => {
           </div>
         </div>
         <p className="text-[12px] font-bold text-[#8898A2] tracking-wide py-4 mx-auto md:mx-0 leading-wide text-center w-72 sm:w-72  md:text-left">
-          ©2023 SME Strategic Development . All rights reserved. Designed and
-          Developed By Tringledo.
+          ©2024 SME Strategic Development. <br /> All rights reserved. <br />{" "}
+          Designed and Developed By{" "}
+          <span className="hover:text-[#A7D707] duration-500">Tringledo.</span>
         </p>
       </footer>
     </div>

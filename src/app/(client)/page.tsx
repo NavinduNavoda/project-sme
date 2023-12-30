@@ -37,9 +37,9 @@ export default function Home() {
           <div className="absolute px-4 sm:px-4 md:px-24 lg:px-40 z-20 w-full lg:mt-[150px] xl:mt-[170px] 2xl:mt-[200px] lg:flex xl:flex 2xl:flex items-center justify-between mt-24">
             <div>
               <p className="text-white uppercase font-bold text-[10px] lg:text-[14px] 2xl:text-[16px] w-[200px] sm:w-[200px] md:w-[250px] lg:w-[350px] xl:w-[400px] 2xl:w-[500px]">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim.
+                Unlock the full potential of your business with our expert
+                guidance. We are committed to steering you towards financial
+                prosperity and strategic growth.
               </p>
             </div>
 
@@ -73,8 +73,8 @@ export default function Home() {
           Our top services and products
         </h1>
         <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12 ">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor.
+          Explore our premier services and products designed to elevate your
+          experience and drive unparalleled success.
         </p>
 
         <ServiceCardList />
@@ -86,8 +86,8 @@ export default function Home() {
           BOOK AN APPOINTMENT FOR,
         </h1>
         <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor onsectetur adipiscing elit. Sed do.
+          Secure your personalized consultation by booking an appointment for
+          tailored solutions, expert advice, and a roadmap to your success
         </p>
       </div>
       <section className="flex items-start justify-center mb-10">
@@ -111,8 +111,9 @@ export default function Home() {
           how to book an appointment
         </h1>
         <p className="text-[12px] text-paralight tracking-wide py-4 leading-wide mb-12">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-          eiusmod tempor onsectetur adipiscing elit. Sed do.
+          Streamline the appointment booking process with our easy-to-follow
+          guide. Take the first step towards unlocking your potential by
+          scheduling a consultation effortlessly.
         </p>
       </div>
       <Timeline />
