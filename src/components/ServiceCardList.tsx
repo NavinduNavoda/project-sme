@@ -54,7 +54,7 @@ const Services = (props: any) => {
       <div className="flex flex-wrap gap-[40px]">
         {services.map((e, i) => {
           return (
-            <div>
+            <div key = {i}>
               <ServiceCard data={e} type="service" />
             </div>
           );

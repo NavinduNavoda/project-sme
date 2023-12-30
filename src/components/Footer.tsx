@@ -27,7 +27,7 @@ const Footer = () => {
               <p className="text-[14px] text-paralight tracking-wide pt-6 leading-wide sm:px-24 md:px-0 md:mr-16 text-center md:text-left xl:w-[500px]">
                 Unlock the full potential of your business with our expert
                 guidance. We are committed to steering you towards financial
-                prosperity and strategic growth. Partner with us, and let's
+                prosperity and strategic growth. Partner with us, and let&apos;s
                 embark on a journey where your aspirations meet achievement.
               </p>
             </div>

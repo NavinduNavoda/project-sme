@@ -4,6 +4,10 @@ import Service from "@/models/serviceModel";
 import { join } from "path";
 import { writeFile, mkdir, unlink } from "fs/promises";
 import {rimraf} from "rimraf";
+import connect from "@/db/connect";
+
+
+connect();
 
 export async function POST(request: NextRequest): Promise<any>{
     const jwtToken = request.cookies.get("session")?.value;

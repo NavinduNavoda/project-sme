@@ -5,6 +5,10 @@ import { writeFile, mkdir, unlink } from "fs/promises";
 import {rimraf} from "rimraf";
 import Book from "@/models/bookModel";
 import { ResponseCookies } from "next/dist/compiled/@edge-runtime/cookies";
+import connect from "@/db/connect";
+
+
+connect();
 
 export async function POST(request: NextRequest): Promise<any>{
 
