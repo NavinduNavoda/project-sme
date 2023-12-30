@@ -32,3 +32,13 @@ export const useServices = create<servicesType>()((set)=>({
     services: [],
     setServices: (services: []) => set({services}),
 }));
+
+interface booksType{
+    books: any[],
+    setBooks: (books: []) => void
+}
+
+export const useBooks = create<booksType>()((set)=>({
+    books: [],
+    setBooks: (books: []) => set({books}),
+}));

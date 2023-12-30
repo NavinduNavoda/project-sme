@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Settings = () => {
+const Settings = (props: any) => {
   return (
     <div className=' p-[50px] pt-[50px]'>
         <h1 className='text-[32px] font-semibold'>Settings</h1>

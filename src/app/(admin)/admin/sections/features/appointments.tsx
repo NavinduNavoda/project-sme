@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Appointments = () => {
+const Appointments = (props: any) => {
   return (
     <div className=' p-[50px] pt-[50px]'>
         <h1 className='text-[32px] font-semibold'>Appointments</h1>

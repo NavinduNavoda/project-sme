@@ -223,7 +223,7 @@ const Services = (props: any) => {
                     services.map((e, i)=>{
                         return (
                             <div onClick={()=>{viewService(i)}}>
-                                <ServiceCard data = {e}/>
+                                <ServiceCard data = {e} type = "service"/>
                             </div>
                         );
                     })

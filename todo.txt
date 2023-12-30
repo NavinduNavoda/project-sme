@@ -1,0 +1,7 @@
+[ ]  i
+[ ]  book recomendations - from service adding
+[ ]  appointemnts records - day - time - subject
+[ ]  filling lorems
+[ ]  books in home page. - hot books
+[ ]  contact us - empty look
+[ ]  aboutus redesign

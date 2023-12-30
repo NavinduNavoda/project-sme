@@ -20,12 +20,12 @@ const Pannel = (props: any) => {
 
         <div className='flex'>
           <Nav setActive = {setActiveSegment} active={activeSegment}/>
-          {(activeSegment == "app") && <Appointments/>}
+          {(activeSegment == "app") && <Appointments adminToken = {props.adminToken}/>}
           {(activeSegment == "ser") && <Services adminToken = {props.adminToken}/>}
-          {(activeSegment == "boo") && <Books/>}
-          {(activeSegment == "cli") && <Clients/>}
-          {(activeSegment == "das") && <Dashboard/>}
-          {(activeSegment == "set") && <Settings/>}
+          {(activeSegment == "boo") && <Books adminToken = {props.adminToken}/>}
+          {(activeSegment == "cli") && <Clients adminToken = {props.adminToken}/>}
+          {(activeSegment == "das") && <Dashboard adminToken = {props.adminToken}/>}
+          {(activeSegment == "set") && <Settings adminToken = {props.adminToken}/>}
         </div>
 
     </div>
