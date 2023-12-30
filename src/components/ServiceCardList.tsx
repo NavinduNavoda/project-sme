@@ -50,16 +50,14 @@ const Services = (props: any) => {
   };
 
   return (
-    <div className=" p-[50px] pt-[50px]">
-      <div className="flex flex-wrap gap-[40px]">
-        {services.map((e, i) => {
-          return (
-            <div>
-              <ServiceCard data={e} type="service" />
-            </div>
-          );
-        })}
-      </div>
+    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-24 justify-between">
+      {services.map((e, i) => {
+        return (
+          <div>
+            <ServiceCard data={e} type="service" />
+          </div>
+        );
+      })}
     </div>
   );
 };

@@ -8,7 +8,7 @@ const ServiceCard = (props: any) => {
       <div className="card w-[225px] 2xl:w-[260px] mb-8 mx-auto">
         <figure>
           <div
-            className=" h-[150px] w-[100%] bg-cover rounded-t-[5px]"
+            className=" h-[150px] w-[100%] bg-cover rounded-t-[5px] hover:scale-110 duration-300"
             style={{
               backgroundImage: `url(uploaded/${
                 props.type == "book"
@@ -25,7 +25,7 @@ const ServiceCard = (props: any) => {
             BUILD YOUR
           </p>
           <h2 className="card-title text-paragrapgh text-[20px] font-montserrat font-black uppercase">
-            {props.data?.title.substring(0, 30)} brand
+            {props.data?.title.substring(0, 16)}
           </h2>
           <p className="text-[16px] text-paragrapgh opacity-[.7] tracking-wide py-4">
             {props.data?.description.substring(0, 80)}...
