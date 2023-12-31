@@ -42,13 +42,13 @@ export async function POST(request: NextRequest): Promise<any> {
             let buffer = Buffer.from(bytes);
             await mkdir(
               process.cwd() +
-                "/public/uploaded/services/" +
+                "/files/services/" +
                 String(service._id),
               { recursive: true }
             );
             let path = join(
               process.cwd(),
-              "public/uploaded/services/" + String(service._id),
+              "files/services/" + String(service._id),
               "thumbnail." + thumbnailExt
             );
             await writeFile(path, buffer);
@@ -60,13 +60,13 @@ export async function POST(request: NextRequest): Promise<any> {
 
             await mkdir(
               process.cwd() +
-                "/public/uploaded/services/" +
+                "/files/services/" +
                 String(service._id),
               { recursive: true }
             );
             let path = join(
               process.cwd(),
-              "public/uploaded/services/" + String(service._id),
+              "files/services/" + String(service._id),
               "pic." + picExt
             );
             console.log(path);
@@ -120,7 +120,7 @@ export async function PUT(request: NextRequest): Promise<any> {
               if (thumbnail) {
                 let path = join(
                   process.cwd(),
-                  "public/uploaded/services/" + String(data.get("_id")),
+                  "files/services/" + String(data.get("_id")),
                   ser.thumbnail
                 );
                 await unlink(path);
@@ -128,7 +128,7 @@ export async function PUT(request: NextRequest): Promise<any> {
               if (pic) {
                 let path = join(
                   process.cwd(),
-                  "public/uploaded/services/" + String(data.get("_id")),
+                  "files/services/" + String(data.get("_id")),
                   ser.pic
                 );
                 await unlink(path);
@@ -163,13 +163,13 @@ export async function PUT(request: NextRequest): Promise<any> {
             let buffer = Buffer.from(bytes);
             await mkdir(
               process.cwd() +
-                "/public/uploaded/services/" +
+                "/files/services/" +
                 String(service._id),
               { recursive: true }
             );
             let path = join(
               process.cwd(),
-              "public/uploaded/services/" + String(service._id),
+              "files/services/" + String(service._id),
               "thumbnail." + thumbnailExt
             );
             await writeFile(path, buffer);
@@ -181,13 +181,13 @@ export async function PUT(request: NextRequest): Promise<any> {
 
             await mkdir(
               process.cwd() +
-                "/public/uploaded/services/" +
+                "/files/services/" +
                 String(service._id),
               { recursive: true }
             );
             let path = join(
               process.cwd(),
-              "public/uploaded/services/" + String(service._id),
+              "files/services/" + String(service._id),
               "pic." + picExt
             );
             console.log(path);
@@ -230,7 +230,7 @@ export async function DELETE(request: NextRequest): Promise<any> {
           try {
             let path = join(
               process.cwd(),
-              "public/uploaded/services/" + String(data.get("_id"))
+              "files/services/" + String(data.get("_id"))
             );
             await rimraf(path);
           } catch (e) {
@@ -249,6 +249,6 @@ export async function DELETE(request: NextRequest): Promise<any> {
 }
 
 export async function GET(request: NextRequest): Promise<any> {
-  const services = await Service.find({});
-  return NextResponse.json(services, { status: 200 });
+    const services = await Service.find({});
+    return NextResponse.json(services, { status: 200 });
 }

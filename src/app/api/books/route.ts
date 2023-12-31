@@ -55,8 +55,8 @@ export async function POST(request: NextRequest): Promise<any>{
                     if(thumbnail){
                         let bytes = await thumbnail.arrayBuffer();
                         let buffer = Buffer.from(bytes);
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "thumbnail." + thumbnailExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "thumbnail." + thumbnailExt);
                         await writeFile(path, buffer);
                         console.log("thumbnail written");
 
@@ -65,8 +65,8 @@ export async function POST(request: NextRequest): Promise<any>{
                         let bytes = await pic.arrayBuffer();
                         let buffer = Buffer.from(bytes);
                         
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "pic." + picExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "pic." + picExt);
                         await writeFile(path, buffer);
                         console.log("pic written");
 
@@ -76,8 +76,8 @@ export async function POST(request: NextRequest): Promise<any>{
                         let bytes = await file.arrayBuffer();
                         let buffer = Buffer.from(bytes);
                         
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "file." + fileExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "file." + fileExt);
                         await writeFile(path, buffer);
                         console.log("file written");
 
@@ -129,15 +129,15 @@ export async function PUT(request: NextRequest): Promise<any>{
                         if(thumbnail || pic || file){
                             let book = await Book.findOne({_id: data.get("_id")});
                             if(thumbnail){
-                                let path = join(process.cwd(), "public/uploaded/books/" + String(data.get("_id")), book.thumbnail);
+                                let path = join(process.cwd(), "uploaded/books/" + String(data.get("_id")), book.thumbnail);
                                 await unlink(path);
                             }
                             if(pic){
-                                let path = join(process.cwd(), "public/uploaded/books/" + String(data.get("_id")), book.pic);
+                                let path = join(process.cwd(), "uploaded/books/" + String(data.get("_id")), book.pic);
                                 await unlink(path);
                             }
                             if(file){
-                                let path = join(process.cwd(), "public/uploaded/books/" + String(data.get("_id")), book.file);
+                                let path = join(process.cwd(), "uploaded/books/" + String(data.get("_id")), book.file);
                                 await unlink(path);
                             }
                         }
@@ -167,8 +167,8 @@ export async function PUT(request: NextRequest): Promise<any>{
                     if(thumbnail){
                         let bytes = await thumbnail.arrayBuffer();
                         let buffer = Buffer.from(bytes);
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "thumbnail." + thumbnailExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "thumbnail." + thumbnailExt);
                         await writeFile(path, buffer);
                         console.log("thumbnail written");
 
@@ -177,8 +177,8 @@ export async function PUT(request: NextRequest): Promise<any>{
                         let bytes = await pic.arrayBuffer();
                         let buffer = Buffer.from(bytes);
                         
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "pic." + picExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "pic." + picExt);
                         await writeFile(path, buffer);
                         console.log("pic written");
 
@@ -187,8 +187,8 @@ export async function PUT(request: NextRequest): Promise<any>{
                         let bytes = await file.arrayBuffer();
                         let buffer = Buffer.from(bytes);
                         
-                        await mkdir(process.cwd() + "/public/uploaded/books/" + String(book._id), { recursive: true });
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(book._id), "file." + fileExt);
+                        await mkdir(process.cwd() + "/uploaded/books/" + String(book._id), { recursive: true });
+                        let path = join(process.cwd(), "uploaded/books/" + String(book._id), "file." + fileExt);
                         await writeFile(path, buffer);
                         console.log("file written");
 
@@ -228,7 +228,7 @@ export async function DELETE(request: NextRequest): Promise<any>{
                 if(adminToken && adminToken == session.token){
 
                     try{
-                        let path = join(process.cwd(), "public/uploaded/books/" + String(data.get("_id")));
+                        let path = join(process.cwd(), "uploaded/books/" + String(data.get("_id")));
                         await rimraf(path);
                     }catch(e){
                         console.log(e);
