@@ -18,7 +18,7 @@ const ServiceCard = (props: any) => {
           <div
             className=" h-[150px] w-[100%] bg-cover rounded-t-[5px]"
             style={{
-              backgroundImage: `url(uploaded/${
+              backgroundImage: `url(${process.cwd()}/uploaded/${
                 props.type == "book"
                   ? "books"
                   : props.type == "service"

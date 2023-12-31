@@ -4,6 +4,9 @@ import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs"
 import { nanoid } from "nanoid";
 import { setToken } from "@/helpers/sessionHandler/sessionDB";
+import connect from "@/db/connect";
+
+connect();
 
 export async function POST(request: NextRequest): Promise<any>{
     const jwtToken = request.cookies.get("session")?.value;
