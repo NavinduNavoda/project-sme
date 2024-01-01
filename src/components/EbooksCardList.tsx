@@ -1,25 +1,19 @@
-"use client"
-
+"use client";
 import React, { useEffect, useState } from "react";
-import ServiceCard from "./ServiceCard";
-
-import { Checkbox } from "@/components/ui/checkbox";
-
+import EbooksCard from "./EbooksCard";
 import axios from "axios";
 
-import { useServices } from "@/app/dataHolders/store";
+import { useBooks } from "@/app/dataHolders/store";
 
-const Services = (props: any) => {
-  const [addCardDrawer, setAddCardDrawer] = useState(false);
-
-  const [usingServiceId, setUsingServiceId] = useState("");
-  const { services, setServices } = useServices();
+const Book = (props: any) => {
+  const [usingBookId, setUsingBookId] = useState("");
+  const { books, setBooks } = useBooks();
 
   useEffect(() => {
-    refreshServices();
+    refreshBooks();
   }, []);
 
-  interface serviceInterface {
+  interface bookInterface {
     title: string;
     description: string;
     yt: string;
@@ -28,9 +22,10 @@ const Services = (props: any) => {
     content: string;
     thumbnail: File | undefined;
     pic: File | undefined;
+    file: File | undefined;
   }
 
-  const [serviceDetails, setServiceDetaills] = useState<serviceInterface>({
+  const [bookDetails, setBookDetails] = useState<bookInterface>({
     title: "",
     description: "",
     yt: "",
@@ -39,13 +34,14 @@ const Services = (props: any) => {
     content: "",
     thumbnail: undefined,
     pic: undefined,
+    file: undefined,
   });
 
-  const refreshServices = async () => {
+  const refreshBooks = async () => {
     try {
-      const res = await axios.get("/api/services");
+      const res = await axios.get("/api/books");
       console.log(res);
-      setServices(res.data);
+      setBooks(res.data);
     } catch (e) {
       console.log(e);
     }
@@ -53,15 +49,11 @@ const Services = (props: any) => {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-24 justify-between">
-      {services.map((e, i) => {
-        return (
-          <div key = {i}>
-            <ServiceCard data={e} type="service" />
-          </div>
-        );
+      {books.map((e, i) => {
+        return <EbooksCard data={e} type="book" />;
       })}
     </div>
   );
 };
 
-export default Services;
+export default Book;

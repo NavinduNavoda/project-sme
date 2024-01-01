@@ -5,7 +5,7 @@ import Link from "next/link";
 const ServiceCard = (props: any) => {
   return (
     <div>
-      <div className="card w-[225px] 2xl:w-[260px] mb-8 mx-auto">
+      <div className="card w-[310px] md:w-[225px] 2xl:w-[260px] mb-8 mx-auto">
         <figure>
           <div
             className=" h-[150px] w-[100%] bg-cover rounded-t-[5px] hover:scale-110 duration-300"

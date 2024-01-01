@@ -1,10 +1,7 @@
-"use client"
+"use client";
 
 import React, { useEffect, useState } from "react";
 import ServiceCard from "./ServiceCard";
-
-import { Checkbox } from "@/components/ui/checkbox";
-
 import axios from "axios";
 
 import { useServices } from "@/app/dataHolders/store";
@@ -55,7 +52,7 @@ const Services = (props: any) => {
     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 mb-24 justify-between">
       {services.map((e, i) => {
         return (
-          <div key = {i}>
+          <div key={i}>
             <ServiceCard data={e} type="service" />
           </div>
         );

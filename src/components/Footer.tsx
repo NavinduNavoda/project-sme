@@ -54,10 +54,14 @@ const Footer = () => {
               Let’s Discuss Your{" "}
               <span className=" text-accentsme">business.</span>
             </h1>
-            <div className="grid w-full gap-2">
-              <Textarea placeholder="Please provide us with your email, and we will contact you soon." />
-              <Button className=" bg-paragrapgh rounded-[2px]">Send</Button>
+            <div className="grid gap-2 mx-auto items-center justify-center md:justify-start">
+              <Textarea
+                placeholder="Please provide us with your email, and we will contact you soon."
+                className=""
+              />
+              <Button className="bg-paragrapgh rounded-[2px]">Send</Button>
             </div>
+
             <div className="flex lg:p-5 py-5  justify-between sm:px-12 md:px-2 lg:px-12 sm:gap-8">
               <FaInstagram
                 size={30}

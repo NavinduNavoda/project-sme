@@ -100,7 +100,7 @@ const Navbar = () => {
 
   return (
     <div>
-      <div className="w-full px-4 sm:px-4 md:px-12 lg:px-24 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent max-w-screen-2xl mx-auto flex items-center justify-between z-40">
+      <div className="w-full px-4 sm:px-4 md:px-12 lg:px-24 h-20 lg:h-28 text-paragrapgh lg:text-paragrapgh bg-white lg:bg-transparent max-w-screen-2xl mx-auto mb-8 flex items-center justify-between z-40">
         <div>
           <NavLink href="/">
             <Image
@@ -160,7 +160,13 @@ const Navbar = () => {
                     Please check your email to verify.
                   </p>
                 </div>
-                <div>resend email.</div>
+                <div className="flex gap-4">
+                  <button onClick={handleClick} disabled={isButtonDisabled}>
+                    Resend OTP
+                  </button>
+
+                  {isButtonDisabled && <p>{formatTime(timer)} </p>}
+                </div>
               </div>
             )}
           </div>
@@ -248,7 +254,18 @@ const Navbar = () => {
                       <IoAlertCircle size={20} />
                       <p>Please check your email to verify.</p>
                     </div>
-                    <div>resend email.</div>
+
+                    <div>
+                      <button
+                        onClick={handleClick}
+                        disabled={isButtonDisabled}
+                        className="underline"
+                      >
+                        Resend OTP
+                      </button>
+
+                      {isButtonDisabled && <p>{formatTime(timer)} </p>}
+                    </div>
                   </div>
                 )}
               </div>

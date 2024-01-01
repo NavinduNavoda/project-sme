@@ -16,8 +16,8 @@ const ServiceInfo = () => {
         <header className="hero mb-12 md:mb-24">
           <div className="hero-inner flex flex-col items-center">
             <h1 className="font-bold text-[25px] sm:text-[30px] md:text-[35px] lg:text-[40px] xl:text-[50px] 2xl:text-[60px] font-montserrat text-paragrapgh text-center md:px-12 lg:px-24 pb-12 w-[350px] md:w-auto ">
-              Unveiling Your Business&apos;s Radiant Potential: Cosmetic Consultancy
-              for Success!
+              Unveiling Your Business&apos;s Radiant Potential: Cosmetic
+              Consultancy for Success!
             </h1>
             <Button className="bg-accentsme hover:bg-accentsmehover hover:scale-110 transition duration-700">
               Build now
