@@ -33,8 +33,8 @@ export async function POST(request: NextRequest): Promise<any> {
             price: Number(data.get("price")),
             content: data.get("content"),
             top: data.get("top") == "true",
-            thumbnail: "thumbnail." + thumbnailExt,
-            pic: "pic." + picExt,
+            thumbnail: thumbnailExt,
+            pic: picExt,
           }).save();
 
           if (thumbnail) {
@@ -148,8 +148,8 @@ export async function PUT(request: NextRequest): Promise<any> {
           if (data.get("price")) updateJson["price"] = data.get("price");
           if (data.get("content")) updateJson["content"] = data.get("content");
           if (data.get("top")) updateJson["top"] = data.get("top");
-          if (thumbnail) updateJson["thumbnail"] = "thumbnail." + thumbnailExt;
-          if (pic) updateJson["pic"] = "pic." + picExt;
+          if (thumbnail) updateJson["thumbnail"] = thumbnailExt;
+          if (pic) updateJson["pic"] = picExt;
 
           console.log(updateJson);
 
