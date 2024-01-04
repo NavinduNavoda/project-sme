@@ -1,8 +1,8 @@
 "use client";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
-import connectDB from "../../../../db/connect";
-import serviceModel from "../../../../models/serviceModel";
+import connect from "@/db/connect";
+import serviceModel from "@/models/serviceModel";
 
 const ServiceDetailPage: React.FC = () => {
   const router = useRouter();
@@ -12,7 +12,7 @@ const ServiceDetailPage: React.FC = () => {
   useEffect(() => {
     const fetchService = async () => {
       try {
-        await connectDB();
+        await connect();
         const fetchedService = await serviceModel.findById(serviceId as string);
 
         // Set the service state
