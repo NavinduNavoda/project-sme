@@ -52,7 +52,7 @@ export async function POST(request: NextRequest): Promise<any> {
               "thumbnail." + thumbnailExt
             );
             await writeFile(path, buffer);
-            console.log("thumbnail written");
+            console.log("thumbnail written: " + path);
           }
           if (pic) {
             let bytes = await pic.arrayBuffer();
@@ -71,7 +71,7 @@ export async function POST(request: NextRequest): Promise<any> {
             );
             console.log(path);
             await writeFile(path, buffer);
-            console.log("pic written");
+            console.log("pic written: " + path);
           }
 
           return NextResponse.json({ success: true }, { status: 200 });

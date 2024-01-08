@@ -46,7 +46,7 @@ const About = () => {
                   organizational effectiveness. Our commitment to excellence,
                   coupled with a client-centric approach, positions us as a
                   trusted partner in navigating the challenges and opportunities
-                  of today's dynamic business landscape.
+                  of today&apos;s dynamic business landscape.
                 </p>
               </div>
             </div>
